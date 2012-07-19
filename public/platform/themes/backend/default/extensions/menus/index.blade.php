@@ -11,7 +11,7 @@
 @endsection
 
 <!-- Queue Scripts -->
-@section ('styles')
+@section ('scripts')
 @endsection
 
 <!-- Page Content -->
