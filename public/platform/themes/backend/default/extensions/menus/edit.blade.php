@@ -1,21 +1,26 @@
 @layout('templates.default')
 
+<!-- Page Title -->
 @section('title')
-	menus.title
+	{{ Lang::line('menus::menus.title') }}
 @endsection
 
-@section('links')
-	{{ Theme::asset('menus::css/menus.less') }}
+<!-- Queue Styles -->
+@section ('styles')
+	{{ Theme::queue_asset('menus', 'menus::css/menus.less') }}
+@endsection
+
+<!-- Queue Scripts -->
+@section ('scripts')
+	{{ Theme::queue_asset('jquery-helpers', 'js/jquery/helpers.js') }}
+	{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js') }}
+	{{ Theme::queue_asset('jquery-ui', 'js/jquery/ui-1.8.18.min.js') }}
+	{{ Theme::queue_asset('jquery-nestedsortable', 'js/jquery/nestedsortable-1.3.4.js') }}
+	{{ Theme::queue_asset('jquery-nestysortable', 'js/jquery/nestysortable-1.0.js') }}
+	{{ Theme::queue_asset('menussortable', 'menus::js/menussortable-1.0.js')}}
 @endsection
 
 @section('body_scripts')
-	{{ Theme::asset('js/jquery/helpers.js') }}
-	{{ Theme::asset('js/bootstrap/bootstrap-tab.js') }}
-	{{ Theme::asset('js/jquery/ui-1.8.18.min.js') }}
-	{{ Theme::asset('js/jquery/nestedsortable-1.3.4.js') }}
-	{{ Theme::asset('js/jquery/nestysortable-1.0.js') }}
-	{{ Theme::asset('menus::js/menussortable-1.0.js') }}
-
 	<script>
 	$(document).ready(function() {
 
