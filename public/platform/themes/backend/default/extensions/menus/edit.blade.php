@@ -12,12 +12,12 @@
 
 <!-- Queue Scripts -->
 @section ('scripts')
-	{{ Theme::queue_asset('jquery-helpers', 'js/jquery/helpers.js') }}
-	{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js') }}
-	{{ Theme::queue_asset('jquery-ui', 'js/jquery/ui-1.8.18.min.js') }}
-	{{ Theme::queue_asset('jquery-nestedsortable', 'js/jquery/nestedsortable-1.3.4.js') }}
-	{{ Theme::queue_asset('jquery-nestysortable', 'js/jquery/nestysortable-1.0.js') }}
-	{{ Theme::queue_asset('menussortable', 'menus::js/menussortable-1.0.js')}}
+	{{ Theme::queue_asset('jquery-helpers', 'js/jquery/helpers.js', 'jquery') }}
+	{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js', 'jquery') }}
+	{{ Theme::queue_asset('jquery-ui', 'js/jquery/ui-1.8.18.min.js', 'jquery') }}
+	{{ Theme::queue_asset('jquery-nestedsortable', 'js/jquery/nestedsortable-1.3.4.js', 'jquery') }}
+	{{ Theme::queue_asset('jquery-nestysortable', 'js/jquery/nestysortable-1.0.js', 'jquery') }}
+	{{ Theme::queue_asset('menussortable', 'menus::js/menussortable-1.0.js', 'jquery')}}
 @endsection
 
 @section('body_scripts')
