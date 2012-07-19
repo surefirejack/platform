@@ -1,25 +1,30 @@
 @layout('templates.default')
 
+<!-- Page Title -->
 @section('title')
 	{{ Lang::line('settings::settings.title') }}
 @endsection
 
-@section('links')
-
+<!-- Queue Styles -->
+@section ('styles')
 @endsection
 
-@section('body_scripts')
-	{{ Theme::asset('js/bootstrap/bootstrap-tab.js') }}
+<!-- Queue Scripts -->
+@section ('scripts')
+	{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js', 'jquery') }}
 @endsection
 
+<!-- Page Content -->
 @section('content')
 <section id="settings">
 
-	<header class="head row">
-		<div class="span6">
-			<h1>{{ Lang::line('settings::settings.title') }}</h1>
-			<p>{{ Lang::line('settings::settings.description') }}</p>
-		</div>
+	<header class="row">
+			<div class="span4">
+				<h1>{{ Lang::line('settings::settings.title') }}</h1>
+				<p>{{ Lang::line('settings::settings.description') }}</p>
+			</div>
+			<nav class="actions span8 pull-right">
+			</nav>
 	</header>
 
 	<hr>
