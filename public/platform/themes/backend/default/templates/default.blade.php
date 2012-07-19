@@ -27,12 +27,23 @@
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Queue Links -->
+	<!-- Queue Styles -->
 	{{ Theme::queue_asset('style', 'css/style.less') }}
-	<!-- Release Links -->
+
+	@yield('styles')
+
+	<!-- Release Styles -->
 	{{ Theme::release_assets('styles') }}
-	<!-- Apply Options -->
+
+	<!-- Apply Style Options -->
 	@widget('platform.themes::options.css')
+
+	<!-- Queue Scripts -->
+	{{ Theme::queue_asset('jquery', 'js/jquery-1.7.2.min.js') }}
+	{{ Theme::queue_asset('admin', 'js/admin.js') }}
+	{{ Theme::queue_asset('url', 'js/url.js') }}
+
+	@yield('scripts')
 
 	<link rel="shortcut icon" href="{{ Theme::asset('img/favicon.png') }}">
 	<link rel="apple-touch-icon-precomposed" href="{{ Theme::asset('img/apple-touch-icon-precomposed.png') }}">
@@ -113,12 +124,11 @@
 		</div>
 	</div>
 
-<!-- Queue Scripts -->
-{{ Theme::queue_asset('jquery', 'js/jquery-1.7.2.min.js') }}
-{{ Theme::queue_asset('admin', 'js/admin.js') }}
-{{ Theme::queue_asset('url', 'js/url.js') }}
-
 <!-- Release Scripts -->
 {{ Theme::release_assets('scripts') }}
+
+<!-- Body Scripts -->
+@yield('body_scripts');
+
 </body>
 </html>
