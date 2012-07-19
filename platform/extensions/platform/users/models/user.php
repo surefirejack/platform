@@ -58,7 +58,7 @@ class User extends Crud
 	 *
 	 * @return bool
 	 */
-	public function save()
+	public function save($events = array('before', 'after'))
 	{
 		// first check if we want timestamps as this will append to attributes
 		if (static::$_timestamps)
@@ -146,9 +146,17 @@ class User extends Crud
 					$user->remove_from_group($group);
 				}
 
-				list($query, $attributes) = $this->before_update(null, $attributes);
+				if (in_array('before', $events))
+				{
+					list($query, $attributes) = $this->before_update(null, $attributes);
+				}
+
 				$result = Sentry::user((int) $key)->update($attributes) === true;
-				$result = $this->after_update($result);
+				
+				if (in_array('after', $events))
+				{
+					$result = $this->after_update($result);
+				}
 
 				if (static::$_events)
 				{
@@ -170,19 +178,30 @@ class User extends Crud
 		{
 			try
 			{
-				list($query, $attributes) = $this->before_insert(null, $attributes);
+				if (in_array('before', $events))
+				{
+					list($query, $attributes) = $this->before_insert(null, $attributes);
+				}
 
 				if ($register)
 				{
 					$result = Sentry::user()->register($attributes);
-					$result['id'] = $this->after_insert($result);
+
+					if (in_array('after', $events))
+					{
+						$result['id'] = $this->after_insert($result);	
+					}
 
 					$user_id = (int) $result['id'];
 				}
 				else
 				{
 					$result = Sentry::user()->create($attributes);
-					$result = $this->after_insert($result);
+
+					if (in_array('after', $events))
+					{
+						$result = $this->after_insert($result);
+					}
 
 					$user_id = (int) $result;
 				}
@@ -221,7 +240,7 @@ class User extends Crud
 	 *
 	 * @return  bool
 	 */
-	public function delete()
+	public function delete($events = array('before', 'after'))
 	{
 		// make sure a key is set then grab and remove it from the attributes array
 		if ( ! isset($this->{static::key()}) or empty($this->{static::key()}))
@@ -232,16 +251,25 @@ class User extends Crud
 
 		try
 		{
-			$this->before_delete(null);
+			if (in_array('before', $events))
+			{
+				$this->before_delete(null);
+			}
+
 			$result = Sentry::user($this->{static::key()})->delete();
 
-		if (static::$_events)
-		{
-			// fire delete event
-			Event::fire(static::event().'.delete', array($this));
-		}
+			if (static::$_events)
+			{
+				// fire delete event
+				Event::fire(static::event().'.delete', array($this));
+			}
 
-			return $this->after_delete($result);
+			if (in_array('after', $events))
+			{
+				$result = $this->after_delete($result);
+			}
+
+			return $result;
 		}
 		catch(SentryException $e)
 		{

@@ -46,7 +46,7 @@ class Group extends Crud
 	 *
 	 * @return bool
 	 */
-	public function save()
+	public function save($events = array('before', 'after'))
 	{
 		// first check if we want timestamps as this will append to attributes
 		if (static::$_timestamps)
@@ -89,9 +89,17 @@ class Group extends Crud
 
 			try
 			{
-				list($query, $attributes) = $this->before_update(null, $attributes);
+				if (in_array('before', $events))
+				{
+					list($query, $attributes) = $this->before_update(null, $attributes);				
+				}
+
 				$result = Sentry::group((int) $key)->update($attributes) === true;
-				$result = $this->after_update($result);
+				
+				if (in_array('after', $events))
+				{
+					$result = $this->after_update($result);
+				}
 
 				if (static::$_events)
 				{
@@ -113,9 +121,17 @@ class Group extends Crud
 		{
 			try
 			{
-				list($query, $attributes) = $this->before_insert(null, $attributes);
+				if (in_array('before', $events))
+				{
+					list($query, $attributes) = $this->before_insert(null, $attributes);
+				}
+
 				$result = Sentry::group()->create($attributes);
-				$result = $this->after_insert($result);
+
+				if (in_array('after', $events))
+				{
+					$result = $this->after_insert($result);	
+				}
 
 				$attributes['id'] = (int) $result;
 				$this->fill($attributes);
@@ -143,7 +159,7 @@ class Group extends Crud
 	 *
 	 * @return  bool
 	 */
-	public function delete()
+	public function delete($events = array('before', 'after'))
 	{
 		// make sure a key is set then grab and remove it from the attributes array
 		if ( ! isset($this->{static::key()}) or empty($this->{static::key()}))
@@ -154,7 +170,11 @@ class Group extends Crud
 
 		try
 		{
-			$this->before_delete(null);
+			if (in_array('before', $events))
+			{
+				$this->before_delete(null);
+			}
+
 			$result = Sentry::group($this->{static::key()})->delete();
 
 			if (static::$_events)
@@ -163,7 +183,12 @@ class Group extends Crud
 				Event::fire(static::event().'.delete', array($this));
 			}
 
-			return $this->after_delete($result);
+			if (in_array('after', $events))
+			{
+				$result = $this->after_delete($result);
+			}
+
+			return $result;
 		}
 		catch(SentryException $e)
 		{
@@ -178,7 +203,7 @@ class Group extends Crud
 	 * @param  array   $columns
 	 * @return Model
 	 */
-	public static function find($id = null, $columns = null)
+	public static function find($id = null, $columns = null, $events = array('before', 'after'))
 	{
 		if ($id == null)
 		{
