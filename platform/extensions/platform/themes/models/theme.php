@@ -136,8 +136,8 @@ class Theme extends Crud
 	public static function fetch($type, $name = null)
 	{
 		// use default namespace to use theme class, rather than pointing to this model
-		$path = path('public').\Theme::get_directory().$type;
-		$theme_list = \Theme::find_all($type);
+		$path = path('public').\Theme::directory().$type;
+		$theme_list = \Theme::all($type);
 
 		$themes = array();
 		foreach ($theme_list as $theme)

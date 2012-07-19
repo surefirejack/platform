@@ -1,17 +1,26 @@
 @layout('templates.default')
 
+<!-- Page Title -->
 @section('title')
 	{{ Lang::line('users::users.general.title') }}
 @endsection
 
-@section('links')
-	{{ Theme::asset('css/table.css') }}
+<!-- Queue Styles -->
+@section('styles')
+	{{ Theme::queue_asset('table', 'css/table.css') }}
 @endsection
 
+<!-- Queue Scripts -->
+@section ('scripts')
+	{{ Theme::queue_asset('table', 'js/table.js', 'jquery') }}
+	{{ Theme::queue_asset('users', 'users::js/users.js', 'jquery') }}
+@endsection
+
+<!-- Body Scripts -->
 @section('body_scripts')
-	{{ Theme::asset('js/table.js', 'users::js/users.js') }}
 @endsection
 
+<!-- Page Content -->
 @section('content')
 
 <section id="users">
