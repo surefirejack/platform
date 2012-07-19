@@ -5,15 +5,25 @@
 	{{ Lang::line('extensions::extensions.title') }}
 @endsection
 
+<!-- Queue Styles -->
+@section ('styles')
+@endsection
+
+<!-- Queue Scripts -->
+@section ('scripts')
+@endsection
+
 <!-- Page Content -->
 @section('content')
-<div id="extensions">
+<section id="extensions">
 
-	<header class="head row">
-		<div class="span6">
-			<h1>{{ Lang::line('extensions::extensions.title') }}</h1>
-			<p>{{ Lang::line('extensions::extensions.tagline') }}</p>
-		</div>
+	<header class="row">
+			<div class="span4">
+				<h1>{{ Lang::line('extensions::extensions.title') }}</h1>
+				<p>{{ Lang::line('extensions::extensions.tagline') }}</p>
+			</div>
+			<nav class="actions span8 pull-right">
+			</nav>
 	</header>
 
 	<hr>
@@ -98,5 +108,5 @@
 			</div>
 		</div>
 
-</div>
+</section>
 @endsection
