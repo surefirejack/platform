@@ -29,11 +29,12 @@ class Users_Auth_Controller extends Public_Controller
 	public function before()
 	{
 		parent::before();
-		$this->active_menu('primary-home');
+		$this->active_menu('main-home');
 	}
 
 	public function get_register()
 	{
+		$this->active_menu('main-register');
 		return Theme::make('users::auth/register');
 	}
 
@@ -88,7 +89,7 @@ class Users_Auth_Controller extends Public_Controller
 	{
 
 		API::get('users/logout');
-
+		$this->active_menu('main-login');
 		return Theme::make('users::auth/login');
 	}
 

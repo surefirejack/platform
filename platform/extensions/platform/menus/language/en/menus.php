@@ -33,6 +33,11 @@ return array(
 		'secure'      => 'Secure (HTTPS)',
 		'status'      => 'Enabled',
 		'new_item'    => 'New Item',
+		'type'        => 'Visability',
+		'show_always' => 'Show Always',
+		'logged_in'   => 'Logged In',
+		'logged_out'  => 'Logged Out',
+		'admin'       => 'Admin Only',
 	),
 
 	/* Buttons */

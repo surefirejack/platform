@@ -42,30 +42,35 @@
 </head>
 <body>
 
-<div id="base">
-	<div id="page">
 
-		@widget('platform.users::menu.profile')
+<div id="base" class="grid">
 
-		<div class="header">
 
+	<header class="rows">
+		<!-- profile menu -->
+		@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
+
+		<div class="container">
 			<a href="{{ URL::to('') }}">
 				<img class="brand" src="{{ Theme::asset('img/brand.png') }}" title="Platform by Cartalyst LLC">
 			</a>
-
 			<h1>@yield('title')</h1>
-
 		</div>
+	</header>
 
-		<div class="content">
-			@yield('content')
+	<div id="page" class="rows expand">
+		<div class="grid">
+			<div class="content column expand">
+				@yield('content')
+			</div>
 		</div>
-
 	</div>
 
-	<div class="footer">
-		@include('templates.partials.footer')
-	</div>
+	<footer class="rows">
+		<div class="container">
+			@include('templates.partials.footer')
+		</div>
+	</footer>
 
 </div>
 

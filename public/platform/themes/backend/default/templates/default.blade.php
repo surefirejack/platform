@@ -42,8 +42,10 @@
 
 </head>
 <body>
-
+	<!-- profile menu -->
+	@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
 	<div id="base" class="grid">
+
 		<header class="rows">
 			<div class="brand">
 				<a href="{{ URL::to_secure(ADMIN) }}">
@@ -54,9 +56,7 @@
 				<h1>@get.settings.site.title</h1>
 				<p class="lead">@get.settings.site.tagline</p>
 			</div>
-			<div class="profile">
-				@widget('platform.users::users.profile')
-			</div>
+
 			<div class="wrapper">
 				<div class="navigation">
 					@widget('platform.menus::menus.nav', 'admin', 1, 'nav nav-tabs', ADMIN)

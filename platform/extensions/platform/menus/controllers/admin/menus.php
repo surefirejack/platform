@@ -135,6 +135,7 @@ class Menus_Admin_Menus_Controller extends Admin_Controller
 			'name'    => Input::get('item_fields.'.$item['id'].'.name'),
 			'slug'    => Input::get('item_fields.'.$item['id'].'.slug'),
 			'uri'     => Input::get('item_fields.'.$item['id'].'.uri'),
+			'type'    => Input::get('item_fields.'.$item['id'].'.type', 0),
 			'status'  => Input::get('item_fields.'.$item['id'].'.status', 1),
 		);
 

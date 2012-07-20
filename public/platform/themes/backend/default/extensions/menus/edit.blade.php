@@ -118,6 +118,11 @@
 									</label>
 								</div>
 
+								<div class="control-group">
+									{{ Form::label('new-item-type', Lang::line('menus::menus.general.type')) }}
+									{{ Form::select('type', array('0' => Lang::line('menus::menus.general.show_always'), '1' => Lang::line('menus::menus.general.logged_in'), '2' => Lang::line('menus::menus.general.logged_out'), '3' => Lang::line('menus::menus.general.admin')), '0') }}
+								</div>
+
 								<hr>
 
 								<button type="button" class="btn btn-small btn-primary items-add-new">{{ Lang::line('menus::menus.button.add_item') }}</button>

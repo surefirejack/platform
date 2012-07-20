@@ -1,4 +1,5 @@
 <li class="{{ in_array($item['id'], $active_path) ? 'active' : null }}">
+
 	{{ HTML::link(($before_uri ? $before_uri.'/' : null).$item['uri'], $item['name']) }}
 
 	@if ($item['children'])
