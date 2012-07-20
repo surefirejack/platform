@@ -5,13 +5,15 @@
 	{{ Lang::line('settings::settings.title') }}
 @endsection
 
-<!-- Queue Styles -->
-@section ('styles')
+<!-- Styles -->
+@section('styles')
+	@parent
 @endsection
 
-<!-- Queue Scripts -->
+<!-- Scripts -->
 @section ('scripts')
-	{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js', 'jquery') }}
+	@parent
+	{{ Theme::asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js') }}
 @endsection
 
 <!-- Page Content -->
