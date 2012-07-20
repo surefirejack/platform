@@ -68,14 +68,6 @@ hr {
 	padding: 20px;
 }
 
-#base .profile-menu {
-		position:absolute;
-		top:30px;
-		right:30px;
-	}
-
-
-
 /* #header
 ================================================== */
 #base > header  {
@@ -117,6 +109,23 @@ hr {
 		font-weight:bold;
 		font-family: verdana, sans-serif;
 	}
+	#base > header nav {
+		text-align: center;
+		padding:10px 0;
+	}
+
+	// we need to overide bootstrap here to center the menu.
+	#base > header .nav > li > a {
+		display:inline;
+	}
+
+	#base > header .nav-tabs > li, #base > header .nav-pills > li {
+		float:none;
+		display: inline;
+	}
+
+
+
 /* #content
 ================================================== */
 #page {

@@ -114,6 +114,7 @@ class Menus
 				case 3:
 					if (Sentry::check() and Sentry::user()->has_access(array('is_admin', 'superuser')))
 					{
+						$child['uri'] = ADMIN.'/'.$child['uri'];
 						$menu_children[] = $child;
 					}
 				break;
