@@ -1,25 +1,33 @@
 @layout('templates.default')
 
+<!-- Page Title -->
 @section('title')
-	{{ Lang::line('themes::themes.general.title') }}
+	{{ Lang::line('themes::themes.title') }}
 @endsection
 
-@section('links')
-	{{ Theme::asset('themes::css/themes.less') }}
+<!-- Styles -->
+@section('styles')
+	@parent
+	{{ Theme::asset('themes','themes::css/themes.less') }}
 @endsection
 
-@section('body_scripts')
-	{{ Theme::asset('themes::js/themes.js') }}
+<!-- Scripts -->
+@section ('scripts')
+	@parent
+	{{ Theme::asset('themes','themes::js/themes.js') }}
 @endsection
 
+<!-- Page Content -->
 @section('content')
-
 <section id="themes">
-	<header class="head row">
-		<div class="span6">
-			<h1>{{ $theme['name'] }}</h1>
-			<p>{{ $theme['description'] }} by {{ $theme['author'] }} v{{ $theme['version'] }}</p>
-		</div>
+
+	<header class="row">
+			<div class="span6">
+				<h1>{{ $theme['name'] }}</h1>
+				<p>{{ $theme['description'] }} by {{ $theme['author'] }} v{{ $theme['version'] }}</p>
+			</div>
+			<nav class="actions span6 pull-right">
+			</nav>
 	</header>
 
 	<hr>

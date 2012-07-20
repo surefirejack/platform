@@ -1,26 +1,33 @@
 @layout('templates.default')
 
+<!-- Page Title -->
 @section('title')
-	{{ Lang::line('themes::themes.general.title') }}
+	{{ Lang::line('themes::themes.title') }}
 @endsection
 
-@section('links')
-	{{ Theme::asset('themes::css/themes.less') }}
+<!-- Styles -->
+@section('styles')
+	@parent
+	{{ Theme::asset('themes','themes::css/themes.less') }}
 @endsection
 
-@section('body_scripts')
-	{{ Theme::asset('themes::js/themes.js') }}
+<!-- Scripts -->
+@section ('scripts')
+	@parent
+	{{ Theme::asset('themes','themes::js/themes.js') }}
 @endsection
 
+<!-- Page Content -->
 @section('content')
-
 <section id="themes">
 
-	<header class="head row">
-		<div class="span6">
-			<h1>{{ Lang::line('themes::themes.general.title') }}</h1>
-			<p>{{ Lang::line('themes::themes.general.description') }}</p>
-		</div>
+	<header class="row">
+			<div class="span4">
+				<h1>{{ Lang::line('themes::themes.title') }}</h1>
+				<p>{{ Lang::line('themes::themes.description') }}</p>
+			</div>
+			<nav class="actions span8 pull-right">
+			</nav>
 	</header>
 
 	<hr>
