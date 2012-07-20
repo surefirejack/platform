@@ -48,7 +48,7 @@
 
 	<header class="rows">
 		<!-- profile menu -->
-		@widget('platform.users::menu.profile')
+		@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
 
 		<div class="container">
 			<a href="{{ URL::to('') }}">

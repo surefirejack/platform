@@ -34,6 +34,11 @@
 				</div>
 
 				<div class="control-group">
+					{{ Form::label('menu-items-'.$item['id'].'-type', Lang::line('menus::menus.general.type')) }}
+					{{ Form::select('item_fields['.$item['id'].'][type]', array(0 => Lang::line('menus::menus.general.show_always'), 1 => Lang::line('menus::menus.general.logged_in'), 2 => Lang::line('menus::menus.general.logged_out'), 3 => Lang::line('menus::menus.general.admin')), $item['type'], array('id' => 'menu-items-'.$item['id'].'-type', ( ! $item['user_editable']) ? 'disabled' : 'required')) }}
+				</div>
+
+				<div class="control-group">
 					{{ Form::label('menu-items-'.$item['id'].'-status', Lang::line('menus::menus.general.status')) }}
 					{{ Form::select('item_fields['.$item['id'].'][status]', array(1 => Lang::line('menus::menus.general.yes'), 0 => Lang::line('menus::menus.general.no')), $item['status'], array('id' => 'menu-items-'.$item['id'].'-status', ( ! $item['user_editable']) ? 'disabled' : 'required')) }}
 				</div>
