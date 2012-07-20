@@ -1,1 +1,0 @@
-<p>Logged in as: {{ HTML::link_to_secure(ADMIN.'/users/edit/'. Platform::user()->get('id'), Platform::user()->get('metadata.first_name').' '.Platform::user()->get('metadata.last_name')) }} | {{ HTML::link_to_secure(ADMIN.'/logout', 'Logout') }}</p>
