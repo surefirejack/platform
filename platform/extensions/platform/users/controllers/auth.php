@@ -34,7 +34,7 @@ class Users_Auth_Controller extends Public_Controller
 
 	public function get_register()
 	{
-		$this->active_menu('main-login');
+		$this->active_menu('main-register');
 		return Theme::make('users::auth/register');
 	}
 

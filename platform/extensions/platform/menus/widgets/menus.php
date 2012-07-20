@@ -22,6 +22,7 @@ namespace Platform\Menus\Widgets;
 
 use API;
 use Input;
+use Sentry;
 use Theme;
 
 class Menus
@@ -62,8 +63,8 @@ class Menus
 
 			// Grab all children items from the API
 			$items_result = API::get('menus/children', array(
-				'id'    => $active_result['active_path'][(int) $start],
-				'depth' => (int) $children_depth,
+				'id'       => $active_result['active_path'][(int) $start],
+				'depth'    => (int) $children_depth,
 			));
 		}
 
@@ -90,9 +91,38 @@ class Menus
 			return '';
 		}
 
-		// Return teh 
+		$menu_children = array();
+		foreach($items_result['children'] as $child)
+		{
+			switch ($child['type'])
+			{
+				case 0:
+					$menu_children[] = $child;
+				break;
+				case 1:
+					if (Sentry::check())
+					{
+						$menu_children[] = $child;
+					}
+				break;
+				case 2:
+					if ( ! Sentry::check())
+					{
+						$menu_children[] = $child;
+					}
+				break;
+				case 3:
+					if (Sentry::check() and Sentry::user()->has_access(array('is_admin', 'superuser')))
+					{
+						$menu_children[] = $child;
+					}
+				break;
+			}
+		}
+
+		// Return teh
 		return Theme::make('menus::widgets.nav')
-		            ->with('items', $items_result['children'])
+		            ->with('items', $menu_children)
 		            ->with('active_path', $active_result['active_path'])
 		            ->with('class', $class)
 		            ->with('before_uri', $before_uri);
