@@ -45,17 +45,18 @@
 
 <div id="base" class="grid">
 
-
 	<header class="rows">
-		<!-- profile menu -->
-		@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
-
 		<div class="container">
 			<a href="{{ URL::to('') }}">
 				<img class="brand" src="{{ Theme::asset('img/brand.png') }}" title="Platform by Cartalyst LLC">
 			</a>
 			<h1>@get.settings.site.title</h1>
+			<hr>
+			<nav>
+				@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
+			</nav>
 			<h2>Platform is an application base, a bootstrap for Laravel. The fundamentals <span>+</span> a few essentials included. It's well documented, feature awesome, and open source.</h2>
+
 		</div>
 	</header>
 

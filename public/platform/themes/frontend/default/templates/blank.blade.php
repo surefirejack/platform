@@ -45,16 +45,16 @@
 
 <div id="base" class="grid">
 
-
 	<header class="rows">
-		<!-- profile menu -->
-		@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
-
 		<div class="container">
 			<a href="{{ URL::to('') }}">
 				<img class="brand" src="{{ Theme::asset('img/brand.png') }}" title="Platform by Cartalyst LLC">
 			</a>
 			<h1>@yield('title')</h1>
+			<hr>
+			<nav>
+				@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
+			</nav>
 		</div>
 	</header>
 

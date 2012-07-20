@@ -52,8 +52,8 @@ class Menus_Install
 		/* # Create Menu Items
 		================================================== */
 
-		// Set admin menu
-		$menu = Menu::admin_menu();
+		// Create admin menu
+		$admin = Menu::admin_menu();
 
 		// Create system link
 		$system = new Menu(array(
@@ -65,7 +65,7 @@ class Menus_Install
 			'status'        => 1,
 		));
 
-		$system->last_child_of($menu);
+		$system->last_child_of($admin);
 
 		// Create menus link
 		$menus = new Menu(array(
@@ -78,6 +78,76 @@ class Menus_Install
 		));
 
 		$menus->last_child_of($system);
+
+		// Create main menu
+		$main = Menu::main_menu();
+
+		// Create home link
+		$home = new Menu(array(
+			'name'          => 'Home',
+			'extension'     => '',
+			'slug'          => 'main-home',
+			'uri'           => '',
+			'type'			=> 0,
+			'user_editable' => 0,
+			'status'        => 1,
+		));
+
+		$home->last_child_of($main);
+
+		// Create login link
+		$login = new Menu(array(
+			'name'          => 'Login',
+			'extension'     => '',
+			'slug'          => 'main-login',
+			'uri'           => 'login',
+			'type'			=> 2,
+			'user_editable' => 0,
+			'status'        => 1,
+		));
+
+		$login->last_child_of($main);
+
+		// Create logout link
+		$logout = new Menu(array(
+			'name'          => 'Logout',
+			'extension'     => '',
+			'slug'          => 'main-logout',
+			'uri'           => 'logout',
+			'type'			=> 1,
+			'user_editable' => 0,
+			'status'        => 1,
+		));
+
+		$logout->last_child_of($main);
+
+		// Create register link
+		$register = new Menu(array(
+			'name'          => 'Register',
+			'extension'     => '',
+			'slug'          => 'main-register',
+			'uri'           => 'register',
+			'type'			=> 2,
+			'user_editable' => 0,
+			'status'        => 1,
+		));
+
+		$register->last_child_of($main);
+
+		// Create admin dashboard link
+		$register = new Menu(array(
+			'name'          => 'Admin Dashboard',
+			'extension'     => '',
+			'slug'          => 'main-admin-dashboard',
+			'uri'           => 'dashboard',
+			'type'			=> 3,
+			'user_editable' => 0,
+			'status'        => 1,
+		));
+
+		$register->last_child_of($main);
+
+
 	}
 
 	/**
