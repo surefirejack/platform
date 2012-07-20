@@ -1,9 +1,21 @@
 @layout('templates.default')
 
+<!-- Page Title -->
 @section('title')
 	{{ Lang::line('users::users.create.title') }}
 @endsection
 
+<!-- Styles -->
+@section('styles')
+	@parent
+@endsection
+
+<!-- Scripts -->
+@section ('scripts')
+	@parent
+@endsection
+
+<!-- Page Content -->
 @section('content')
 
 <section id="users">

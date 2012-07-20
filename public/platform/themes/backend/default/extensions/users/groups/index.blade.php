@@ -1,17 +1,24 @@
 @layout('templates.default')
 
+<!-- Page Title -->
 @section('title')
 	{{ Lang::line('users::groups.general.title') }}
 @endsection
 
-@section('links')
-	{{ Theme::asset('css/table.css') }}
+<!-- Styles -->
+@section('styles')
+	@parent
+	{{ Theme::asset('table', 'css/table.css') }}
 @endsection
 
-@section('body_scripts')
-	{{ Theme::asset('js/table.js', 'users::js/groups.js') }}
+<!-- Scripts -->
+@section ('scripts')
+	@parent
+	{{ Theme::asset('table', 'js/table.js') }}
+	{{ Theme::asset('users', 'users::js/users.js') }}
 @endsection
 
+<!-- Page Content -->
 @section('content')
 
 <section id="groups">

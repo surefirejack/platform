@@ -1,13 +1,22 @@
 @layout('templates.default')
 
+<!-- Page Title -->
 @section('title')
 	{{ Lang::line('users::users.update.title') }}
 @endsection
 
-@section('body_scripts')
-	{{ Theme::asset('js/bootstrap/bootstrap-tab.js') }}
+<!-- Styles -->
+@section('styles')
+	@parent
 @endsection
 
+<!-- Scripts -->
+@section ('scripts')
+	@parent
+	{{ Theme::asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js') }}
+@endsection
+
+<!-- Page Content -->
 @section('content')
 <section id="users-edit">
 

@@ -5,19 +5,17 @@
 	{{ Lang::line('users::users.general.title') }}
 @endsection
 
-<!-- Queue Styles -->
+<!-- Styles -->
 @section('styles')
-	{{ Theme::queue_asset('table', 'css/table.css') }}
+	@parent
+	{{ Theme::asset('table', 'css/table.css') }}
 @endsection
 
-<!-- Queue Scripts -->
+<!-- Scripts -->
 @section ('scripts')
-	{{ Theme::queue_asset('table', 'js/table.js', 'jquery') }}
-	{{ Theme::queue_asset('users', 'users::js/users.js', 'jquery') }}
-@endsection
-
-<!-- Body Scripts -->
-@section('body_scripts')
+	@parent
+	{{ Theme::asset('table', 'js/table.js') }}
+	{{ Theme::asset('users', 'users::js/users.js') }}
 @endsection
 
 <!-- Page Content -->
