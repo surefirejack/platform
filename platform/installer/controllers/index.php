@@ -115,7 +115,14 @@ class Installer_Index_Controller extends Base_Controller
 
 	public function get_install()
 	{
-		// 1. Create user
+
+		// 1. Create the database config file
+		Installer::create_database_config(Installer::get_step_data(2, function() {
+			Redirect::to('installer/step_2')->send();
+			exit;
+		}));
+
+		// 2. Create user
 		$user = Installer::get_step_data(3, function() {
 			Redirect::to('installer/step_3')->send();
 			exit;
@@ -135,12 +142,6 @@ class Installer_Index_Controller extends Base_Controller
 				Config::get('sentry::sentry.permissions.superuser') => 1,
 			),
 		);
-
-		// 2. Create the database config file
-		Installer::create_database_config(Installer::get_step_data(2, function() {
-			Redirect::to('installer/step_2')->send();
-			exit;
-		}));
 
 		// 3. Create a random key
 		Installer::generate_key();
