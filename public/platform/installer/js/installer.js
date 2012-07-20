@@ -13,9 +13,16 @@ $(document).ready(function() {
 	*/
 	$('.messages').html('Awaiting Credentials');
 
+	var checkDisclaimer = function()
+	{
+		return $('#disclaimer').is(':checked');
+	}
+
 	var checkDBCredentials = function() {
 
-		length = $('#database-form').find('select, input:not(:password)').filter(function()
+		var db_pass = false;
+
+		length = $('#database-form').find('select, input:not([type=password], [type=checkbox])').filter(function()
 		{
 			return $(this).val() == '';
 		}).length;
@@ -25,6 +32,7 @@ $(document).ready(function() {
 			$.ajax({
 				type     : 'POST',
 				url      : platform.url.base('installer/confirm_db'),
+				async    : false,
 				data     : $('#database-form').serialize(),
 				dataType : 'JSON',
 				success  : function(data, textStatus, jqXHR) {
@@ -35,10 +43,12 @@ $(document).ready(function() {
 					                [data.error ? 'removeClass' : 'addClass']('alert-success')
 					                .show();
 
-					$('#database-form button:submit')[data.error ? 'attr' : 'removeAttr']('disabled', 'disabled');
+					db_pass = ! data.error;
+					
+					// $('#database-form button:submit')[data.error ? 'attr' : 'removeAttr']('disabled', 'disabled');
 				},
 				error    : function(jqXHR, textStatus, errorThrown) {
-
+					db_pass = false;
 					// Don't know
 					if (jqXHR.status != 0) {
 						alert(jqXHR.status + ' ' + errorThrown);
@@ -48,6 +58,8 @@ $(document).ready(function() {
 		}
 		else
 		{
+			db_pass = false;
+
 			$('.messages')
 				.removeClass('alert-success')
 				.removeClass('alert-error')
@@ -56,6 +68,8 @@ $(document).ready(function() {
 
 			$('#database-form button:submit').attr('disabled', 'disabled');
 		}
+
+		return db_pass;
 	}
 
 	var checkUserCredentials = function() {
@@ -87,7 +101,7 @@ $(document).ready(function() {
 					                [data.error ? 'removeClass' : 'addClass']('alert-success')
 					                .show();
 
-					$('#user-form button:submit')[data.error ? 'attr' : 'removeAttr']('disabled', 'disabled');
+	                $('#user-form button:submit').removeAttr('disabled', 'disabled');
 				},
 				error    : function(jqXHR, textStatus, errorThrown) {
 
@@ -153,7 +167,7 @@ $(document).ready(function() {
 
 	if ($('#database-form').length)
 	{
-		checkDBCredentials();
+		db = checkDBCredentials();
 
 		$('#database-form').find('select, input').on('focus keyup change', function(e) {
 
@@ -163,7 +177,12 @@ $(document).ready(function() {
 				return;
 			}
 
-			checkDBCredentials();
+			if (checkDBCredentials() && checkDisclaimer()) {
+				$('#database-form button:submit').removeAttr('disabled', 'disabled');
+			}
+			else {
+				$('#database-form button:submit').attr('disabled', 'disabled');
+			}
 
 		});
 	}
