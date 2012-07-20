@@ -348,6 +348,17 @@ class Platform
 		return call_user_func_array(array($plugin, $method), $parameters);
 	}
 
+	public static function start_installer()
+	{
+		Bundle::register('installer', array(
+			'location' => 'path: '.path('installer'),
+			'handles'  => 'installer',
+		));
+
+		// Load the installer bundle
+		Bundle::start('installer');
+	}
+
 	/**
 	 * Determines if Platform has been installed or not.
 	 *
@@ -355,29 +366,47 @@ class Platform
 	 */
 	public static function is_installed()
 	{
-		$installed = true;
-
 		// Check for the database config file
 		if ( ! File::exists(path('app').'config'.DS.'database'.EXT))
 		{
-			$installed = false;
+			if (is_dir(path('base').'installer') and ! Request::cli())
+			{
+				return false;
+			}
+			else
+			{
+				throw new Exception('No database file exists in application/config');
+			}
 		}
 
 		// List installed extensions. If the count is more than 0, we
 		// have installed Platform.
+
+		// Extension table exists, but is empty.
 		try
 		{
-			// Extension table exists, but is empty.
 			if (count(Platform::extensions_manager()->enabled()) === 0)
 			{
-				$installed = false;
+				if (is_dir(path('base').'installer') and ! Request::cli())
+				{
+					return false;
+				}
+				else
+				{
+					throw new Exception('No Platform tables exist');
+				}
 			}
 		}
-
-		// Extensions table doesn't exist
 		catch (Exception $e)
 		{
-			$installed = false;
+			if (is_dir(path('base').'installer') and ! Request::cli())
+			{
+				return false;
+			}
+			else
+			{
+				throw new Exception('No Platform tables exist');
+			}
 		}
 
 		// Now, count the users table.
@@ -385,14 +414,28 @@ class Platform
 		{
 			if (DB::table('users')->count() === 0)
 			{
-				$installed = false;
+				if (is_dir(path('base').'installer') and ! Request::cli())
+				{
+					return false;
+				}
+				else
+				{
+					throw new Exception('No Platform users exist');
+				}
 			}
 		}
 		catch (Exception $e)
 		{
-			$installed = false;
+			if (is_dir(path('base').'installer') and ! Request::cli())
+			{
+				return false;
+			}
+			else
+			{
+				throw new Exception('No Platform users exist');
+			}
 		}
 
-		return $installed;
+		return true;
 	}
 }
