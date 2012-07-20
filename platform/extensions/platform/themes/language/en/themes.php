@@ -20,10 +20,12 @@
 
 return array(
 
+
+	'title'       => 'Theme Management',
+	'description' => 'Activate, deactivate, and customize themes.',
+
 	/* General */
 	'general' => array(
-		'title'       => 'Theme Management',
-		'description' => 'Activate, deactivate, and customize themes.',
 		'author'      => 'Author:',
 		'version'     => 'Version:'
 	),
