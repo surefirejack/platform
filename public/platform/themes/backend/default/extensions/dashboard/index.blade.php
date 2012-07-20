@@ -1,16 +1,18 @@
 @layout('templates.default')
 
 <!-- Page Title -->
-@section ('title')
+@section('title')
 	{{ Lang::line('dashboard::dashboard.title') }}
 @endsection
 
-<!-- Queue Styles -->
-@section ('styles')
+<!-- Styles -->
+@section('styles')
+	@parent
 @endsection
 
-<!-- Queue Scripts -->
+<!-- Scripts -->
 @section ('scripts')
+	@parent
 @endsection
 
 <!-- Page Content -->
