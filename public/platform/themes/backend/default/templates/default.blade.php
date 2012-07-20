@@ -42,9 +42,15 @@
 
 </head>
 <body>
-	<!-- profile menu -->
-	@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
+
+	<!-- main menu -->
+	<div class="main-menu">
+		@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
+	</div>
+
 	<div id="base" class="grid">
+
+
 
 		<header class="rows">
 			<div class="brand">
