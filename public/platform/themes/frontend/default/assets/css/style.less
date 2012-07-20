@@ -26,7 +26,35 @@ body {background: @bodyBackground url(../img/bg-body.png);}
 
 html, body {
 	height: 100%;
-	margin: 0;
+	margin: 0pt;
+}
+
+*>/**/.grid {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.grid>.rows, .grid>.column, .grid>.rows>.column {
+	height: 0.1%;
+	position: relative;
+}
+.grid>/**/.rows {
+	display: table-row;
+	height: 1px;
+}
+.grid>/**/.rows.expand {
+	height: auto;
+}
+.grid>/**/.column, .grid>/**/.rows>.column {
+	display: table-cell;
+	height: auto;
+	width: 1px;
+}
+.grid>/**/.column.expand, .grid>/**/.rows>.column.expand {
+	width: auto;
 }
 
 hr {
@@ -40,30 +68,29 @@ hr {
 	padding: 20px;
 }
 
-/* #content
-================================================== */
-#page {
-	background: @page url(../img/bg-page.png);
-	border:1px solid @etch;
-}
-
-	#page .profile {
+#base .profile-menu {
 		position:absolute;
 		top:30px;
 		right:30px;
 	}
-	#page .header {
-		padding:40px 20px;
-		text-align:center;
-		max-width:960px;
-		margin:0 auto;
-	}
 
-	#page .header .brand {
+
+
+/* #header
+================================================== */
+#base > header  {
+	background: @page url(../img/bg-page.png);
+	}
+	#base > header .container {
+			padding:40px 20px;
+			text-align:center;
+			margin:0 auto;
+		}
+	#base > header .brand {
 		width:120px;
 	}
 
-	#page .header h1 {
+	#base > header h1 {
 		font-size: 48px;
 		font-style: normal;
 		font-weight: bold;
@@ -72,7 +99,7 @@ hr {
 		line-height: 1.4em;
 		color:@purple;
 	}
-	#page .header h2 {
+	#base > header h2 {
 		font-family: Helvetica, Arial, sans-serif;
 		font-size: 22px;
 		font-style: normal;
@@ -84,13 +111,17 @@ hr {
 		margin:20px 0;
 	}
 
-	#page .header h2 span {
+	#base > header h2 span {
 		color:@purple;
 		font-size:1.3em;
 		font-weight:bold;
 		font-family: verdana, sans-serif;
 	}
-
+/* #content
+================================================== */
+#page {
+	background: @page url(../img/bg-page.png);
+}
 
 	#page .content {
 		padding:20px 40px;
@@ -101,15 +132,15 @@ hr {
 /* #footer
 ================================================== */
 
-.footer {
-	background:@base;
+#base > footer {
+	background:@page;
 	text-align:center;
-	padding:20px;
-	border:1px solid @etch;
-	border-top:1px solid @white;
 }
+	#base > footer .container {
+		padding:40px;
+	}
 
-	.footer .copyright, #footer .licence {
+	#base > footer .copyright, #base > footer .licence {
 		color:@gray;
 		font-style: italic;
 		line-height:10px;

@@ -42,32 +42,36 @@
 </head>
 <body>
 
-<div id="base">
-	<div id="page">
 
+<div id="base" class="grid">
+
+
+	<header class="rows">
+		<!-- profile menu -->
 		@widget('platform.users::menu.profile')
 
-		<div class="header">
-
+		<div class="container">
 			<a href="{{ URL::to('') }}">
 				<img class="brand" src="{{ Theme::asset('img/brand.png') }}" title="Platform by Cartalyst LLC">
 			</a>
-
 			<h1>@get.settings.site.title</h1>
-
 			<h2>Platform is an application base, a bootstrap for Laravel. The fundamentals <span>+</span> a few essentials included. It's well documented, feature awesome, and open source.</h2>
-
 		</div>
+	</header>
 
-		<div class="content">
-			@yield('content')
+	<div id="page" class="rows expand">
+		<div class="grid">
+			<div class="content column expand">
+				@yield('content')
+			</div>
 		</div>
-
 	</div>
 
-	<div class="footer">
-		@include('templates.partials.footer')
-	</div>
+	<footer class="rows">
+		<div class="container">
+			@include('templates.partials.footer')
+		</div>
+	</footer>
 
 </div>
 

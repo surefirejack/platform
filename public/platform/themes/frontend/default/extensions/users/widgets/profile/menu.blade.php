@@ -1,4 +1,4 @@
-<ul class="profile nav nav-pills">
+<ul class="profile-menu nav nav-pills">
 
 @if ( Sentry::check() and Sentry::user()->has_access('is_admin'))
 	<li>
