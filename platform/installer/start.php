@@ -25,3 +25,9 @@ Autoloader::namespaces(array(
 Autoloader::directories(array(
 	Bundle::path('installer').'models',
 ));
+
+if ( ! URI::is('installer|installer/*'))
+{
+	Redirect::to('installer')->send();
+	exit;
+}
