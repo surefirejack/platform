@@ -29,6 +29,10 @@
 		{{ Form::password('password', array('class' => 'span3', 'placeholder' => 'Password')) }}
 		{{ Form::text('database', $credentials['database'], array('class' => 'span3', 'placeholder' => 'Database Name', 'required')) }}
 	</fieldset>
+	<fieldset>
+		{{ Form::checkbox('disclaimer', '', false, array('id' => 'disclaimer')) }}
+		<strong>Warning:</strong> If the database has existing tables that conflict with Platform, they will be dropped during the Platform Installation process. You may want to back up your existing database.
+	</fieldset>
 	<div class="actions">
 		<a class="btn btn-large" href="{{URL::to('installer/step_1');}}">Back</a>
 		<button type="submit" class="btn btn-large" disabled>

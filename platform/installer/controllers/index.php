@@ -115,12 +115,23 @@ class Installer_Index_Controller extends Base_Controller
 
 	public function get_install()
 	{
-
 		// 1. Create the database config file
 		Installer::create_database_config(Installer::get_step_data(2, function() {
 			Redirect::to('installer/step_2')->send();
 			exit;
 		}));
+
+		// update config for this request instance
+		$step2_data = Installer::get_step_data(2);
+		Config::set('database.connections.'.$step2_data['driver'], array(
+				'driver'   => $step2_data['driver'],
+				'host'     => $step2_data['host'],
+				'database' => $step2_data['database'],
+				'username' => $step2_data['username'],
+				'password' => $step2_data['password'],
+				'charset'  => 'utf8',
+				'prefix'   => '',
+		));
 
 		// 2. Create user
 		$user = Installer::get_step_data(3, function() {
