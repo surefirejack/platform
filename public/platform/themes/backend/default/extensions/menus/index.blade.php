@@ -5,18 +5,22 @@
 	{{ Lang::line('menus::menus.title') }}
 @endsection
 
-<!-- Queue Styles -->
-@section ('styles')
-	{{ Theme::queue_asset('menus', 'menus::css/menus.less') }}
+<!-- Styles -->
+@section('styles')
+	@parent
+
+	{{ Theme::asset('menus', 'menus::css/menus.less') }}
 @endsection
 
-<!-- Queue Scripts -->
+<!-- Scripts -->
 @section ('scripts')
+	@parent
 @endsection
 
 <!-- Page Content -->
 @section('content')
 <section id ="menus">
+
 	<header class="row">
 			<div class="span4">
 				<h1>{{ Lang::line('menus::menus.title') }}</h1>

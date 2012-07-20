@@ -5,22 +5,23 @@
 	{{ Lang::line('menus::menus.title') }}
 @endsection
 
-<!-- Queue Styles -->
-@section ('styles')
-	{{ Theme::queue_asset('menus', 'menus::css/menus.less') }}
+<!-- Styles -->
+@section('styles')
+	@parent
+	{{ Theme::asset('menus', 'menus::css/menus.less') }}
 @endsection
 
-<!-- Queue Scripts -->
-@section ('scripts')
-	{{ Theme::queue_asset('jquery-helpers', 'js/jquery/helpers.js', 'jquery') }}
-	{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js', 'jquery') }}
-	{{ Theme::queue_asset('jquery-ui', 'js/jquery/ui-1.8.18.min.js', 'jquery') }}
-	{{ Theme::queue_asset('jquery-nestedsortable', 'js/jquery/nestedsortable-1.3.4.js', 'jquery') }}
-	{{ Theme::queue_asset('jquery-nestysortable', 'js/jquery/nestysortable-1.0.js', 'jquery') }}
-	{{ Theme::queue_asset('menussortable', 'menus::js/menussortable-1.0.js', 'jquery')}}
-@endsection
+<!-- Scripts -->
+@section('scripts')
+	@parent
 
-@section('body_scripts')
+	{{ Theme::asset('jquery-helpers', 'js/jquery/helpers.js') }}
+	{{ Theme::asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js') }}
+	{{ Theme::asset('jquery-ui', 'js/jquery/ui-1.8.18.min.js') }}
+	{{ Theme::asset('jquery-nestedsortable', 'js/jquery/nestedsortable-1.3.4.js') }}
+	{{ Theme::asset('jquery-nestysortable', 'js/jquery/nestysortable-1.0.js') }}
+	{{ Theme::asset('menussortable', 'menus::js/menussortable-1.0.js')}}
+
 	<script>
 	$(document).ready(function() {
 
@@ -60,104 +61,105 @@
 @endsection
 
 @section('content')
-	<section id="menus-edit">
+<section id="menus-edit">
 
-		<header class="head row">
-			<div class="span4">
-				<h1>{{ Lang::line('menus::menus.update.title') }}</h1>
-				<p>{{ Lang::line('menus::menus.update.description') }}</p>
-			</div>
-		</header>
+	<header class="row">
+		<div class="span4">
+			<h1>{{ Lang::line('menus::menus.update.title') }}</h1>
+			<p>{{ Lang::line('menus::menus.update.description') }}</p>
+		</div>
+		<nav class="actions span8 pull-right"></nav>
+	</header>
 
-		<hr>
+	<hr>
 
-		{{ Form::open(ADMIN.'/menus/edit/'.$menu_id ?: null, 'POST', array('id' => 'platform-menu', 'autocomplete' => 'off', 'novalidate')) }}
+	{{ Form::open(ADMIN.'/menus/edit/'.$menu_id ?: null, 'POST', array('id' => 'platform-menu', 'autocomplete' => 'off', 'novalidate')) }}
 
-			{{ Form::token() }}
+		{{ Form::token() }}
 
-			<div class="tabbable">
-				<ul class="nav nav-tabs">
-					<li class="{{ ($menu_id) ? 'active' : null }}"><a href="#menus-edit-items" data-toggle="tab">{{ Lang::line('menus::menus.tabs.items') }}</a></li>
-					<li class="{{ ( ! $menu_id) ? 'active' : null }}"><a href="#menus-edit-menu-options" data-toggle="tab">{{ Lang::line('menus::menus.tabs.options') }}</a></li>
-				</ul>
-				<div class="tab-content">
-					<div class="tab-pane {{ ($menu_id) ? 'active' : null }}" id="menus-edit-items">
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+				<li class="{{ ($menu_id) ? 'active' : null }}"><a href="#menus-edit-items" data-toggle="tab">{{ Lang::line('menus::menus.tabs.items') }}</a></li>
+				<li class="{{ ( ! $menu_id) ? 'active' : null }}"><a href="#menus-edit-menu-options" data-toggle="tab">{{ Lang::line('menus::menus.tabs.options') }}</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane {{ ($menu_id) ? 'active' : null }}" id="menus-edit-items">
 
-						<div class="clearfix">
-							<a class="pull-right btn items-toggle-all">{{ Lang::line('menus::menus.button.toggle_items_details') }} <i class="icon-edit"></i></a>
-						</div>
+					<div class="clearfix">
+						<a class="pull-right btn items-toggle-all">{{ Lang::line('menus::menus.button.toggle_items_details') }} <i class="icon-edit"></i></a>
+					</div>
 
-						<div class="clearfix">
+					<div class="clearfix">
 
-							<div class="platform-new-item">
+						<div class="platform-new-item">
 
-								<div class="well">
+							<div class="well">
 
-									<h3>{{ Lang::line('menus::menus.general.new_item') }}</h3>
-									<hr>
+								<h3>{{ Lang::line('menus::menus.general.new_item') }}</h3>
+								<hr>
 
-									<div class="control-group">
-										{{ Form::label('new-item-name', Lang::line('menus::menus.general.name')) }}
-										{{ Form::text(null, null, array('class' => 'input-block-level', 'id' => 'new-item-name', 'placeholder' => Lang::line('menus::menus.general.name'), 'required')) }}
-									</div>
-
-									<div class="control-group">
-										{{ Form::label('new-item-slug', Lang::line('menus::menus.general.slug')) }}
-										{{ Form::text(null, null, array('class' => 'input-block-level item-slug', 'id' => 'new-item-slug', 'placeholder' => Lang::line('menus::menus.general.slug'), 'required')) }}
-									</div>
-
-									<div class="control-group">
-										{{ Form::label('new-item-uri', Lang::line('menus::menus.general.uri')) }}
-										{{ Form::text(null, null, array('class' => 'input-block-level', 'id' => 'new-item-uri', 'placeholder' => Lang::line('menus::menus.general.uri'), 'required')) }}
-
-										<label class="checkbox">
-											{{ Form::checkbox(null, 1, false, array('id' => 'new-item-secure')) }}
-											{{ Lang::line('menus::menus.general.secure') }}
-										</label>
-									</div>
-
-									<hr>
-
-									<button type="button" class="btn btn-small btn-primary items-add-new">{{ Lang::line('menus::menus.button.add_item') }}</button>
-
+								<div class="control-group">
+									{{ Form::label('new-item-name', Lang::line('menus::menus.general.name')) }}
+									{{ Form::text(null, null, array('class' => 'input-block-level', 'id' => 'new-item-name', 'placeholder' => Lang::line('menus::menus.general.name'), 'required')) }}
 								</div>
+
+								<div class="control-group">
+									{{ Form::label('new-item-slug', Lang::line('menus::menus.general.slug')) }}
+									{{ Form::text(null, null, array('class' => 'input-block-level item-slug', 'id' => 'new-item-slug', 'placeholder' => Lang::line('menus::menus.general.slug'), 'required')) }}
+								</div>
+
+								<div class="control-group">
+									{{ Form::label('new-item-uri', Lang::line('menus::menus.general.uri')) }}
+									{{ Form::text(null, null, array('class' => 'input-block-level', 'id' => 'new-item-uri', 'placeholder' => Lang::line('menus::menus.general.uri'), 'required')) }}
+
+									<label class="checkbox">
+										{{ Form::checkbox(null, 1, false, array('id' => 'new-item-secure')) }}
+										{{ Lang::line('menus::menus.general.secure') }}
+									</label>
+								</div>
+
+								<hr>
+
+								<button type="button" class="btn btn-small btn-primary items-add-new">{{ Lang::line('menus::menus.button.add_item') }}</button>
 
 							</div>
 
-							<ol class="platform-menu">
-								@if ($menu['children'])
-									@foreach ($menu['children'] as $child)
-										@render('menus::edit.item', array('item' => $child))
-									@endforeach
-								@endif
-							</ol>
-
 						</div>
 
+						<ol class="platform-menu">
+							@if ($menu['children'])
+								@foreach ($menu['children'] as $child)
+									@render('menus::edit.item', array('item' => $child))
+								@endforeach
+							@endif
+						</ol>
+
 					</div>
-					<div class="tab-pane {{ ( ! $menu_id) ? 'active' : null }}" id="menus-edit-menu-options">
 
-						{{ Form::label('menu-name', Lang::line('menus::menus.general.name')) }}
-						{{ Form::text('name', isset($menu['name']) ? $menu['name'] : null, array('id' => 'menu-name', 'placeholder' => Lang::line('menus::menus.general.name'), (isset($menu['user_editable']) and ! $menu['user_editable']) ? 'disabled' : 'required')) }}
+				</div>
+				<div class="tab-pane {{ ( ! $menu_id) ? 'active' : null }}" id="menus-edit-menu-options">
 
-						{{ Form::label('menu-slug', Lang::line('menus::menus.general.slug')) }}
-						{{ Form::text('slug', isset($menu['slug']) ? $menu['slug'] : null, array('id' => 'menu-slug', 'placeholder' => Lang::line('menus::menus.general.slug'), (isset($menu['user_editable']) and ! $menu['user_editable']) ? 'disabled' : 'required')) }}
+					{{ Form::label('menu-name', Lang::line('menus::menus.general.name')) }}
+					{{ Form::text('name', isset($menu['name']) ? $menu['name'] : null, array('id' => 'menu-name', 'placeholder' => Lang::line('menus::menus.general.name'), (isset($menu['user_editable']) and ! $menu['user_editable']) ? 'disabled' : 'required')) }}
 
-					</div>
+					{{ Form::label('menu-slug', Lang::line('menus::menus.general.slug')) }}
+					{{ Form::text('slug', isset($menu['slug']) ? $menu['slug'] : null, array('id' => 'menu-slug', 'placeholder' => Lang::line('menus::menus.general.slug'), (isset($menu['user_editable']) and ! $menu['user_editable']) ? 'disabled' : 'required')) }}
+
 				</div>
 			</div>
+		</div>
 
-			<div class="form-actions">
+		<div class="form-actions">
 
-				<button type="submit" class="btn btn-primary btn-save-menu">
-					{{ Lang::line('menus::menus.button.'.(($menu_id) ? 'update' : 'create')) }}
-				</button>
+			<button type="submit" class="btn btn-primary btn-save-menu">
+				{{ Lang::line('menus::menus.button.'.(($menu_id) ? 'update' : 'create')) }}
+			</button>
 
-				{{ HTML::link_to_secure(ADMIN.'/menus', Lang::line('menus::menus.button.cancel'), array('class' => 'btn')) }}
+			{{ HTML::link_to_secure(ADMIN.'/menus', Lang::line('menus::menus.button.cancel'), array('class' => 'btn')) }}
 
-			</div>
+		</div>
 
-		{{ Form::close() }}
+	{{ Form::close() }}
 
-	</section>
+</section>
 @endsection
