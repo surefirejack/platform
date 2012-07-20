@@ -1,17 +1,23 @@
 @layout('templates.blank')
 
-<!--queue styles-->
-{{ Theme::queue_asset('auth-forms', 'users::css/auth-forms.less') }}
-
-<!--queue scripts-->
-{{ Theme::queue_asset('register', 'users::js/register.js', 'jquery') }}
-
-<!--page title-->
+<!-- Page Title -->
 @section('title')
 	Platform Register
 @endsection
 
-<!--page content-->
+<!-- Styles -->
+@section('styles')
+	@parent
+	{{ Theme::asset('auth', 'users::css/auth-forms.less') }}
+@endsection
+
+<!-- Scripts -->
+@section ('scripts')
+	@parent
+	{{ Theme::asset('register', 'users::js/register.js', 'jquery') }}
+@endsection
+
+<!-- Page Content -->
 @section('content')
 
 <div>

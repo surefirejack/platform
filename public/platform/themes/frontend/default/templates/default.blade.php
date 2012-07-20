@@ -26,12 +26,12 @@
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Queue Links -->
-	{{ Theme::queue_asset('style', 'css/style.less') }}
-	<!-- Release Links -->
-	{{ Theme::release_assets('styles') }}
+	<!-- Styles -->
+	@section('styles')
+		{{ Theme::asset('style', 'css/style.less') }}
+	@yield_section
 
-	<!-- Apply Options -->
+	<!-- Apply Style Options -->
 	@widget('platform.themes::options.css')
 
 	<link rel="shortcut icon" href="{{ Theme::asset('img/favicon.png') }}">
@@ -71,10 +71,12 @@
 
 </div>
 
-<!-- Queue Scripts -->
-{{ Theme::queue_asset('jquery', 'js/jquery-1.7.2.min.js') }}
+<!-- Scripts -->
+@section('scripts')
 
-<!-- Release Scripts -->
-{{ Theme::release_assets('scripts') }}
+	{{ Theme::asset('jquery', 'js/jquery-1.7.2.min.js') }}
+
+@yield_section
+
 </body>
 </html>
