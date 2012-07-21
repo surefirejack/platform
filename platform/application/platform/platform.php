@@ -436,6 +436,11 @@ class Platform
 			}
 		}
 
+		if (is_dir(path('base').'installer') and ! Request::cli())
+		{
+			Session::put('install_directory', true);
+		}
+
 		return true;
 	}
 }

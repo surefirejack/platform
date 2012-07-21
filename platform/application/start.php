@@ -202,51 +202,10 @@ Bundle::start('crud');
 |
 */
 
-// $installed = Platform::is_installed();
-
-// if (is_dir(path('base').'installer') and ! Request::cli())
-// {
-// 	Bundle::register('installer', array(
-// 		'location' => 'path: '.path('installer'),
-// 		'handles'  => 'installer',
-// 	));
-
-// 	// Load the installer bundle
-// 	Bundle::start('installer');
-
-// 	if ( ! URI::is('installer|installer/*') and ! $installed)
-// 	{
-// 		Redirect::to('installer')->send();
-// 		exit;
-// 	}
-// 	else
-// 	{
-// 		// notify that installer directory still exists
-// 		Session::put('install_dir', 'Install directory still exists');
-// 	}
-// }
-
-// /*
-// |--------------------------------------------------------------------------
-// | Start Platform
-// |--------------------------------------------------------------------------
-// |
-// | Starting Platform allows laravel to setup everything else needed for
-// | Platform to run
-// |
-// */
-
-// if ($installed)
-// {
-// 	Platform::start();
-// }
-
-if (Platform::is_installed())
-{
-	Platform::start();
-}
-else
+if ( ! Platform::is_installed())
 {
 	Platform::start_installer();
 }
+	
+Platform::start();
 
