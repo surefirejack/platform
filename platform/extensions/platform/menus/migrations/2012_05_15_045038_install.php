@@ -89,7 +89,7 @@ class Menus_Install
 			'slug'          => 'main-home',
 			'uri'           => '',
 			'type'			=> 0,
-			'user_editable' => 0,
+			'user_editable' => 1,
 			'status'        => 1,
 		));
 
@@ -102,7 +102,7 @@ class Menus_Install
 			'slug'          => 'main-login',
 			'uri'           => 'login',
 			'type'			=> 2,
-			'user_editable' => 0,
+			'user_editable' => 1,
 			'status'        => 1,
 		));
 
@@ -115,7 +115,7 @@ class Menus_Install
 			'slug'          => 'main-logout',
 			'uri'           => 'logout',
 			'type'			=> 1,
-			'user_editable' => 0,
+			'user_editable' => 1,
 			'status'        => 1,
 		));
 
@@ -128,7 +128,7 @@ class Menus_Install
 			'slug'          => 'main-register',
 			'uri'           => 'register',
 			'type'			=> 2,
-			'user_editable' => 0,
+			'user_editable' => 1,
 			'status'        => 1,
 		));
 
@@ -141,7 +141,7 @@ class Menus_Install
 			'slug'          => 'main-admin-dashboard',
 			'uri'           => 'dashboard',
 			'type'			=> 3,
-			'user_editable' => 0,
+			'user_editable' => 1,
 			'status'        => 1,
 		));
 
