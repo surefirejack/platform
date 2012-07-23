@@ -26,13 +26,14 @@
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Styles -->
-	@section ('styles')
-		{{ Theme::queue_asset('style', 'css/style.less') }}
-	@yield_section
+	<!-- Queue Styles -->
+	{{ Theme::queue_asset('style', 'css/style.less') }}
 
 	<!-- Release Styles -->
 	{{ Theme::release_assets('styles') }}
+
+	<!-- Styles -->
+	@yield('styles')
 
 	<!-- Apply Style Options -->
 	@widget('platform.themes::options.css')
@@ -77,13 +78,14 @@
 
 </div>
 
-<!-- Scripts -->
-@section ('scripts')
-	{{ Theme::queue_asset('jquery', 'js/jquery-1.7.2.min.js') }}
-@yield_section
+<!-- Queue Scripts -->
+{{ Theme::queue_asset('jquery', 'js/jquery-1.7.2.min.js') }}
 
 <!-- Release Scripts -->
 {{ Theme::release_assets('scripts') }}
+
+<!-- Scripts -->
+@yield('scripts')
 
 </body>
 </html>

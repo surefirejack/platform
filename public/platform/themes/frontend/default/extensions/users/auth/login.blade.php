@@ -5,16 +5,18 @@
 	Platform Login
 @endsection
 
+<!-- Queue Styles -->
+{{ Theme::queue_asset('auth', 'users::css/auth-forms.less', 'style') }}
+
 <!-- Styles -->
 @section ('styles')
-	@parent
-	{{ Theme::queue_asset('auth', 'users::css/auth-forms.less', 'style') }}
 @endsection
 
+<!-- Queue Scripts -->
+{{ Theme::queue_asset('login', 'users::js/login.js', 'jquery') }}
+
 <!-- Scripts -->
-@section ('scripts')
-	@parent
-	{{ Theme::queue_asset('login', 'users::js/login.js', 'jquery') }}
+@section('scripts')
 @endsection
 
 <!-- Page Content -->

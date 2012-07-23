@@ -5,16 +5,17 @@
 	{{ Lang::line('menus::menus.title') }}
 @endsection
 
-<!-- Styles -->
-@section('styles')
-	@parent
+<!-- Queue Styles -->
+{{ Theme::queue_asset('menus', 'menus::css/menus.less', 'style') }}
 
-	{{ Theme::asset('menus', 'menus::css/menus.less') }}
+<!-- Styles -->
+@section ('styles')
 @endsection
 
+<!-- Queue Scripts | e.g. Theme::queue_asset('name', 'path_to_js', 'dependency')-->
+
 <!-- Scripts -->
-@section ('scripts')
-	@parent
+@section('scripts')
 @endsection
 
 <!-- Page Content -->

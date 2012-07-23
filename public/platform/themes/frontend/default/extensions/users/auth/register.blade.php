@@ -5,16 +5,18 @@
 	Platform Register
 @endsection
 
+<!-- Queue Styles -->
+{{ Theme::queue_asset('auth', 'users::css/auth-forms.less', 'style') }}
+
 <!-- Styles -->
-@section('styles')
-	@parent
-	{{ Theme::queue_asset('auth', 'users::css/auth-forms.less', 'style') }}
+@section ('styles')
 @endsection
 
+<!-- Queue Scripts -->
+{{ Theme::queue_asset('register', 'users::js/register.js', 'jquery') }}
+
 <!-- Scripts -->
-@section ('scripts')
-	@parent
-	{{ Theme::queue_asset('register', 'users::js/register.js', 'jquery') }}
+@section('scripts')
 @endsection
 
 <!-- Page Content -->

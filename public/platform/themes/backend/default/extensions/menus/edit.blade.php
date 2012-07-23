@@ -5,24 +5,24 @@
 	{{ Lang::line('menus::menus.title') }}
 @endsection
 
+<!-- Queue Styles -->
+{{ Theme::queue_asset('menus', 'menus::css/menus.less', 'style') }}
+
 <!-- Styles -->
-@section('styles')
-	@parent
-	{{ Theme::asset('menus', 'menus::css/menus.less') }}
+@section ('styles')
 @endsection
+
+<!-- Queue Scripts -->
+{{ Theme::queue_asset('jquery-helpers', 'js/jquery/helpers.js', 'jquery') }}
+{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js', 'jquery') }}
+{{ Theme::queue_asset('jquery-ui', 'js/jquery/ui-1.8.18.min.js', 'jquery') }}
+{{ Theme::queue_asset('jquery-nestedsortable', 'js/jquery/nestedsortable-1.3.4.js', 'jquery') }}
+{{ Theme::queue_asset('jquery-nestysortable', 'js/jquery/nestysortable-1.0.js', 'jquery') }}
+{{ Theme::queue_asset('menussortable', 'menus::js/menussortable-1.0.js', 'jquery')}}
 
 <!-- Scripts -->
 @section('scripts')
-	@parent
-
-	{{ Theme::asset('jquery-helpers', 'js/jquery/helpers.js') }}
-	{{ Theme::asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js') }}
-	{{ Theme::asset('jquery-ui', 'js/jquery/ui-1.8.18.min.js') }}
-	{{ Theme::asset('jquery-nestedsortable', 'js/jquery/nestedsortable-1.3.4.js') }}
-	{{ Theme::asset('jquery-nestysortable', 'js/jquery/nestysortable-1.0.js') }}
-	{{ Theme::asset('menussortable', 'menus::js/menussortable-1.0.js')}}
-
-	<script>
+<script>
 	$(document).ready(function() {
 
 		$('#platform-menu').menuSortable({

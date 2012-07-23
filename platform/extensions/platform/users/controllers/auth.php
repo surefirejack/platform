@@ -29,7 +29,7 @@ class Users_Auth_Controller extends Public_Controller
 	public function before()
 	{
 		parent::before();
-		$this->active_menu('main-home');
+		$this->active_menu('main-login');
 	}
 
 	public function get_register()
@@ -159,6 +159,7 @@ class Users_Auth_Controller extends Public_Controller
 	 */
 	public function get_reset_password()
 	{
+		$this->active_menu('main-login');
 		return Theme::make('users::auth/reset_password');
 	}
 
