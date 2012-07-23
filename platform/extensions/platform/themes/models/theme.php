@@ -68,7 +68,7 @@ class Theme extends Crud
 		$compile_dir = str_finish(\Config::get('theme::theme.compile_directory'), DS);
 
 		// set path for css file
-		static::$_filepath = path('public').\Theme::directory().$compile_dir.$attributes['type'].DS.$attributes['theme'].DS.'assets'.DS.'css'.DS.'theme_options.css';
+		static::$_filepath = \Theme::directory().$compile_dir.$attributes['type'].DS.$attributes['theme'].DS.'assets'.DS.'css'.DS.'theme_options.css';
 
 		// encode options for db storage
 		$attributes['options'] = json_encode($attributes['options']);
@@ -86,6 +86,7 @@ class Theme extends Crud
 	{
 		if ($result)
 		{
+
 			// find css file and rewrite contents
 			file_put_contents(static::$_filepath, static::$_css_content);
 		}
