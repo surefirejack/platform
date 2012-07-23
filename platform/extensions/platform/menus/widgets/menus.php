@@ -91,39 +91,9 @@ class Menus
 			return '';
 		}
 
-		$menu_children = array();
-		foreach($items_result['children'] as $child)
-		{
-			switch ($child['type'])
-			{
-				case 0:
-					$menu_children[] = $child;
-				break;
-				case 1:
-					if (Sentry::check())
-					{
-						$menu_children[] = $child;
-					}
-				break;
-				case 2:
-					if ( ! Sentry::check())
-					{
-						$menu_children[] = $child;
-					}
-				break;
-				case 3:
-					if (Sentry::check() and Sentry::user()->has_access(array('is_admin', 'superuser')))
-					{
-						$child['uri'] = ADMIN.'/'.$child['uri'];
-						$menu_children[] = $child;
-					}
-				break;
-			}
-		}
-
 		// Return teh
 		return Theme::make('menus::widgets.nav')
-		            ->with('items', $menu_children)
+		            ->with('items', $items_result['children'])
 		            ->with('active_path', $active_result['active_path'])
 		            ->with('class', $class)
 		            ->with('before_uri', $before_uri);
