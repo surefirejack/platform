@@ -1,12 +1,12 @@
-[submodule "platform/application/bundles/nesty"]
-	path = platform/application/bundles/nesty
+[submodule "platform/bundles/nesty"]
+	path = platform/bundles/nesty
 	url = git@github.com:cartalyst/nesty.git
-[submodule "platform/application/bundles/sentry"]
-	path = platform/application/bundles/sentry
+[submodule "platform/bundles/sentry"]
+	path = platform/bundles/sentry
 	url = git@github.com:cartalyst/sentry.git
-[submodule "platform/application/bundles/theme"]
-	path = platform/application/bundles/theme
+[submodule "platform/bundles/theme"]
+	path = platform/bundles/theme
 	url = git@github.com:cartalyst/theme.git
-[submodule "platform/application/bundles/crud"]
-	path = platform/application/bundles/crud
+[submodule "platform/bundles/crud"]
+	path = platform/bundles/crud
 	url = git@github.com:cartalyst/crud.git
