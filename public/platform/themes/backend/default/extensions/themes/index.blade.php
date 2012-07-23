@@ -5,16 +5,18 @@
 	{{ Lang::line('themes::themes.title') }}
 @endsection
 
+<!-- Queue Styles -->
+{{ Theme::queue_asset('themes','themes::css/themes.less', 'style') }}
+
 <!-- Styles -->
-@section('styles')
-	@parent
-	{{ Theme::asset('themes','themes::css/themes.less') }}
+@section ('styles')
 @endsection
 
+<!-- Queue Scripts -->
+{{ Theme::queue_asset('themes','themes::js/themes.js', 'jquery') }}
+
 <!-- Scripts -->
-@section ('scripts')
-	@parent
-	{{ Theme::asset('themes','themes::js/themes.js') }}
+@section('scripts')
 @endsection
 
 <!-- Page Content -->

@@ -132,6 +132,7 @@
 <!-- Release Scripts -->
 {{ Theme::release_assets('scripts') }}
 
+<!-- Scripts -->
 @yield('scripts')
 
 </body>

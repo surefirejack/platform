@@ -5,15 +5,16 @@
 	{{ Lang::line('users::users.update.title') }}
 @endsection
 
+<!-- Queue Styles | e.g Theme::queue_asset('name', 'path_to_css', 'dependency')-->
+
 <!-- Styles -->
-@section('styles')
-	@parent
+@section ('styles')
 @endsection
 
+<!-- Queue Scripts -->
+{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/tab.js', 'jquery') }}
 <!-- Scripts -->
-@section ('scripts')
-	@parent
-	{{ Theme::asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js') }}
+@section('scripts')
 @endsection
 
 <!-- Page Content -->
