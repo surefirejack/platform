@@ -27,9 +27,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Styles -->
-	@section('styles')
-		{{ Theme::asset('style', 'css/style.less') }}
+	@section ('styles')
+		{{ Theme::queue_asset('style', 'css/style.less') }}
 	@yield_section
+
+	<!-- Release Styles -->
+	{{ Theme::release_assets('styles') }}
 
 	<!-- Apply Style Options -->
 	@widget('platform.themes::options.css')
@@ -77,11 +80,12 @@
 </div>
 
 <!-- Scripts -->
-@section('scripts')
-
-	{{ Theme::asset('jquery', 'js/jquery-1.7.2.min.js') }}
-
+@section ('scripts')
+	{{ Theme::queue_asset('jquery', 'js/jquery-1.7.2.min.js') }}
 @yield_section
+
+<!-- Release Scripts -->
+{{ Theme::release_assets('scripts') }}
 
 </body>
 </html>

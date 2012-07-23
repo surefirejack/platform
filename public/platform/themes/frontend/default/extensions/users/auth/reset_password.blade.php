@@ -8,13 +8,13 @@
 <!-- Styles -->
 @section('styles')
 	@parent
-	{{ Theme::asset('auth', 'users::css/auth-forms.less') }}
+	{{ Theme::queue_asset('auth', 'users::css/auth-forms.less', 'style') }}
 @endsection
 
 <!-- Scripts -->
 @section ('scripts')
 	@parent
-	{{ Theme::asset('login', 'users::js/login.js', 'jquery') }}
+	{{ Theme::queue_asset('login', 'users::js/login.js', 'jquery') }}
 @endsection
 
 <!-- Page Content -->

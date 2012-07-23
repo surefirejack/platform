@@ -1,7 +1,3 @@
-
-
-{{ Theme::queue_asset('alert', 'js/bootstrap/bootstrap-alert.js', 'jquery') }}
-
 <div id="auth">
 	{{ Form::open('login', 'POST', array('id' => 'login-form', 'class' => 'form-horizontal')) }}
 
