@@ -34,25 +34,16 @@
 */
 
 return array(
-	'crud'   => array(
-		'location' => 'path: '.path('app').'bundles'.DS.'crud',
+	'crud',
+	'gitsy',
+	'nesty' => array(
+		'auto' => true
 	),
-	'gitsy'   => array(
-		'location' => 'path: '.path('app').'bundles'.DS.'gitsy',
+	'sentry' => array(
+		'auto' => true,
 	),
-	'nesty'   => array(
-		'location' => 'path: '.path('app').'bundles'.DS.'nesty',
-		'auto'     => true,
-	),
-	'sentry'  => array(
-		'location' => 'path: '.path('app').'bundles'.DS.'sentry',
-		'auto'     => true,
-	),
-	'swiftmailer' => array(
-		'location' => 'path: '.path('app').'bundles'.DS.'swiftmailer',
-	),
-	'theme'   => array(
-		'location' => 'path: '.path('app').'bundles'.DS.'theme',
-		'auto'     => true,
+	'swiftmailer',
+	'theme' => array(
+		'auto' => true,
 	),
 );

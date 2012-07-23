@@ -58,7 +58,7 @@ $paths['installer'] = 'installer';
 // --------------------------------------------------------------
 // The path to the bundles directory.
 // --------------------------------------------------------------
-$paths['bundle'] = 'extensions';
+$paths['bundle'] = 'bundles';
 
 // --------------------------------------------------------------
 // The path to the storage directory.
@@ -69,6 +69,11 @@ $paths['storage'] = 'storage';
 // The path to the public directory.
 // --------------------------------------------------------------
 $paths['public'] = '../public';
+
+// --------------------------------------------------------------
+// The path to the extensions directory.
+// --------------------------------------------------------------
+$paths['extensions'] = 'extensions';
 
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 // END OF USER CONFIGURATION. HERE BE DRAGONS!

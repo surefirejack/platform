@@ -591,8 +591,8 @@ class ExtensionsManager
 	 */
 	public function extensions_directories()
 	{
-		$grouped_extensions   = (array) glob(path('bundle').'*'.DS.'*'.DS.'extension'.EXT, GLOB_NOSORT);
-		$top_level_extensions = (array) glob(path('bundle').'*'.DS.'extension'.EXT, GLOB_NOSORT);
+		$grouped_extensions   = (array) glob(path('extensions').'*'.DS.'*'.DS.'extension'.EXT, GLOB_NOSORT);
+		$top_level_extensions = (array) glob(path('extensions').'*'.DS.'extension'.EXT, GLOB_NOSORT);
 
 		return $this->cascade_extesions_directories($top_level_extensions, $grouped_extensions);
 	}
@@ -640,12 +640,12 @@ class ExtensionsManager
 	public function find_extension_file($slug)
 	{
 		// We'll search the root dir first
-		$files = glob(path('bundle').$slug.DS.'extension'.EXT);
+		$files = glob(path('extensions').$slug.DS.'extension'.EXT);
 
 		if (empty($files))
 		{
 			// We couldn't find the extension file in the first path, so we'll try the 2nd
-			$files = glob(path('bundle').'*'.DS.$slug.DS.'extension'.EXT);
+			$files = glob(path('extensions').'*'.DS.$slug.DS.'extension'.EXT);
 		}
 
 		return ( ! empty($files)) ? $files[0] : false;
