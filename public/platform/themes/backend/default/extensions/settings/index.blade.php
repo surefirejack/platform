@@ -12,7 +12,7 @@
 @endsection
 
 <!-- Queue Scripts -->
-{{ Theme::asset('bootstrap-tab', 'js/bootstrap/tab.js', 'jquery') }}
+{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/tab.js', 'jquery') }}
 
 <!-- Scripts -->
 @section('scripts')
