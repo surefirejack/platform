@@ -87,7 +87,6 @@ $(document).ready(function() {
 				data     : $('#user-form').serialize(),
 				dataType : 'JSON',
 				success  : function(data, textStatus, jqXHR) {
-					console.log(data);
 
 					message = data.message[0];
 
@@ -101,7 +100,12 @@ $(document).ready(function() {
 					                [data.error ? 'removeClass' : 'addClass']('alert-success')
 					                .show();
 
-	                $('#user-form button:submit').removeAttr('disabled', 'disabled');
+					if (data.error) {
+	            	    $('#user-form button:submit').attr('disabled', 'disabled');
+					}
+					else {
+						$('#user-form button:submit').removeAttr('disabled', 'disabled');
+					}
 				},
 				error    : function(jqXHR, textStatus, errorThrown) {
 

@@ -206,6 +206,8 @@ if ( ! Platform::is_installed())
 {
 	Platform::start_installer();
 }
-	
-Platform::start();
+else
+{
+	Platform::start();
+}
 

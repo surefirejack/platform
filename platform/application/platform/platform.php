@@ -348,7 +348,7 @@ class Platform
 		return call_user_func_array(array($plugin, $method), $parameters);
 	}
 
-	public static function start_installer()
+	public static function start_installer($redirect = true)
 	{
 		Bundle::register('installer', array(
 			'location' => 'path: '.path('installer'),
@@ -357,6 +357,12 @@ class Platform
 
 		// Load the installer bundle
 		Bundle::start('installer');
+
+		if ( ! URI::is('installer|installer/*') and $redirect)
+		{
+			Redirect::to('installer')->send();
+			exit;
+		}
 	}
 
 	/**
@@ -403,10 +409,8 @@ class Platform
 			{
 				return false;
 			}
-			else
-			{
-				throw new Exception('No Platform tables exist');
-			}
+
+			throw new Exception('No Platform tables exist');
 		}
 
 		// Now, count the users table.
@@ -438,6 +442,7 @@ class Platform
 
 		if (is_dir(path('base').'installer') and ! Request::cli())
 		{
+			Platform::start_installer(false);
 			Session::put('install_directory', true);
 		}
 
