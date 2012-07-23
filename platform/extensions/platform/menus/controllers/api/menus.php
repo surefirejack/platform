@@ -168,9 +168,40 @@ class Menus_API_Menus_Controller extends API_Controller
 			);
 		}
 
+		// filter out children items based on type
+		$menu_children = array();
+		foreach($children as $child)
+		{
+			switch ($child['type'])
+			{
+				case 0: // always show
+					$menu_children[] = $child;
+				break;
+				case 1: // show if logged in
+					if (Sentry::check())
+					{
+						$menu_children[] = $child;
+					}
+				break;
+				case 2: // show if logged out
+					if ( ! Sentry::check())
+					{
+						$menu_children[] = $child;
+					}
+				break;
+				case 3: // show if admin
+					if (Sentry::check() and Sentry::user()->has_access(array('is_admin', 'superuser')))
+					{
+						$child['uri'] = ADMIN.'/'.$child['uri'];
+						$menu_children[] = $child;
+					}
+				break;
+			}
+		}
+
 		return array(
 			'status'   => true,
-			'children' => $children,
+			'children' => $menu_children,
 		);
 	}
 
