@@ -6,7 +6,7 @@
 @endsection
 
 <!-- Styles -->
-@section('styles')
+@section ('styles')
 	@parent
 @endsection
 

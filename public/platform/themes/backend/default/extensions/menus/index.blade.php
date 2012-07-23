@@ -6,10 +6,9 @@
 @endsection
 
 <!-- Styles -->
-@section('styles')
+@section ('styles')
 	@parent
-
-	{{ Theme::asset('menus', 'menus::css/menus.less') }}
+	{{ Theme::queue_asset('menus', 'menus::css/menus.less', 'style') }}
 @endsection
 
 <!-- Scripts -->
