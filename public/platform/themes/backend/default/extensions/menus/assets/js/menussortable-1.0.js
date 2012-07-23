@@ -21,6 +21,7 @@
 			slugInputSelector:   '.item-slug',
 			uriInputSelector:    '.item-uri',
 			secureInputSelector: '.item-secure',
+			typeInputSelector:   '.item-type',
 
 			// Root menu item slug
 			rootSlug: null,
@@ -39,6 +40,7 @@
 			newItemSlugSelector:   '#new-item-slug',
 			newItemUriSelector:    '#new-item-uri',
 			newItemSecureSelector: '#new-item-secure',
+			newItemTypeSelector:   '#new-item-type',
 
 			// Item selectors
 			itemSelector: '.item',
@@ -186,7 +188,7 @@
 					$(this).closest(self.settings.itemControlGroupSelector).removeClass('error');
 				});
 
-				console.log(takenSlugs);
+				//console.log(takenSlugs);
 			});
 
 			// Trigger a change on the root item which

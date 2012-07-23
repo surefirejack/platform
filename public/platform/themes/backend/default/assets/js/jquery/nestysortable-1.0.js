@@ -149,6 +149,9 @@
 				// Get the item template
 				var itemTemplate = self.settings.itemTemplate;
 
+				// Select Fields
+				var selectFields = {}
+
 				// Flag for valid itemTemplate
 				var valid = true;
 
@@ -165,6 +168,12 @@
 					if ($formElement.is(':checkbox')) {						
 						fieldValue = $formElement.attr('checked') ? 'checked="checked"' : '';
 						rawValue   = $formElement.attr('checked') ? $formElement.attr('value') : 0;
+					}
+					else if ($formElement.is('select')) {
+						fieldValue = $formElement.val();
+						rawValue   = $formElement.val();
+
+						selectFields[field.name] = rawValue;
 					}
 					else {
 						fieldValue = 'value="'+$formElement.val()+'"';
@@ -199,6 +208,14 @@
 				var itemId               = self.settings.lastItemId + 1;
 				itemTemplate             = itemTemplate.replace(/\{\{id\}\}/gi, itemId);
 				self.settings.lastItemId = itemId;
+				itemTemplate             = $(itemTemplate);
+
+				if (Object.keys(selectFields).length)
+				{
+					$.each(selectFields, function(idx, val) {
+						itemTemplate.find('[id$="-'+idx+'"]').val(val);
+					});
+				}
 
 				// Append to DOM
 				self.sortable().append(itemTemplate);
