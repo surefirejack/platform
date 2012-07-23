@@ -1,12 +1,12 @@
 body {
-	background: #eee;
+	background: #333;
 }
 
 #base>header {
-	background: #f7f7f7;
+	background: #ccffcc;
 }
 
 #page {
-	background: #fbfbfb;
+	background: #ccccff;
 }
 

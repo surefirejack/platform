@@ -30,7 +30,7 @@ class Options
 	public function css()
 	{
 		// set type
-		$theme_type = (strpos(Request::route()->controller, 'admin') === false) ? 'frontend' : 'backend';
+		$theme_type = (strpos(\URI::segment(1), ADMIN) === false) ? 'frontend' : 'backend';
 
 		// get active theme
 		$active = API::get('settings', array(
@@ -48,9 +48,9 @@ class Options
 			'type'  => $theme_type,
 			'theme' => $active['value']
 		));
-
+		
 		$status = (isset($active_custom['options']['status'])) ? $active_custom['options']['status'] : 0;
-
+		
 		return Theme::make('themes::widgets.theme_options_css')
 		            ->with('css_file', Theme::active_path().str_finish(Theme::assets_directory(), DS).'css'.DS.'theme_options.css')
 		            ->with('status', $status);

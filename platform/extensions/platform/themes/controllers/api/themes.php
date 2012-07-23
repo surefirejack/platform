@@ -69,10 +69,10 @@ class Themes_API_Themes_Controller extends API_Controller
 			return $query->where('type', '=', $type)
 			             ->where('theme', '=', $theme);
 		});
-
+		
 		return array(
 			'status'  => true,
-			'options' => ( ! empty($theme_options)) ? $theme_options : array()
+			'options' => ( ! empty($theme_options)) ? $theme_options : array(),
 		);
 	}
 

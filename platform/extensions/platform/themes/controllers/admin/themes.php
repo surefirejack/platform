@@ -79,11 +79,11 @@ class Themes_Admin_Themes_Controller extends Admin_Controller
 		// Set menu active states
 		if ($type == 'frontend')
 		{
-			$this->active_menu('frontend');
+			$this->active_menu('admin-frontend');
 		}
 		else
 		{
-			$this->active_menu('backend');
+			$this->active_menu('admin-backend');
 		}
 
 		// get theme.info data
