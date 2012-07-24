@@ -6,7 +6,7 @@
 @endsection
 
 <!-- Queue Styles -->
-{{ Theme::queue_asset('auth', 'users::css/auth-forms.less', 'style') }}
+{{ Theme::queue_asset('auth', 'users::css/form.less', 'style') }}
 
 <!-- Styles -->
 @section ('styles')
