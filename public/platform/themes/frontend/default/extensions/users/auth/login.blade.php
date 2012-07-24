@@ -22,8 +22,8 @@
 <!-- Page Content -->
 @section('content')
 
-<div>
+<section id="login">
 	@widget('platform.users::form.login')
-</div>
+</section>
 
 @endsection
