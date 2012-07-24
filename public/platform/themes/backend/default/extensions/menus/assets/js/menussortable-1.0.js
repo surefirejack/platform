@@ -22,6 +22,7 @@
 			uriInputSelector:    '.item-uri',
 			secureInputSelector: '.item-secure',
 			typeInputSelector:   '.item-type',
+			targetInputSelector: '.item-target',
 
 			// Root menu item slug
 			rootSlug: null,
@@ -41,6 +42,7 @@
 			newItemUriSelector:    '#new-item-uri',
 			newItemSecureSelector: '#new-item-secure',
 			newItemTypeSelector:   '#new-item-type',
+			newItemTargetSelector: '#new-item-target',
 
 			// Item selectors
 			itemSelector: '.item',
@@ -166,7 +168,7 @@
 				}
 			});
 
-			// On blur from a slug field, check against DB slugs 
+			// On blur from a slug field, check against DB slugs
 			// console.log(self.settings.persistedSlugs);
 			$('body').on('blur', self.elem.selector+' '+self.settings.slugInputSelector, function(e) {
 
@@ -188,7 +190,7 @@
 					$(this).closest(self.settings.itemControlGroupSelector).removeClass('error');
 				});
 
-				//console.log(takenSlugs);
+				console.log(takenSlugs);
 			});
 
 			// Trigger a change on the root item which
@@ -206,7 +208,7 @@
 				$(self.settings.newItemSlugSelector).val(self.settings.rootSlug+self.settings.rootSlugAppend+$(this).slugify()).trigger('change').trigger('blur');
 
 				// And the URI
-				$(self.settings.newItemUriSelector).val($(this).slugify('/')).trigger('change');				
+				$(self.settings.newItemUriSelector).val($(this).slugify('/')).trigger('change');
 			});
 
 			return this;

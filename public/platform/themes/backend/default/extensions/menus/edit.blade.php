@@ -55,6 +55,10 @@
 						name        : 'type',
 						newSelector : '#new-item-type'
 					},
+					{
+						name        : 'target',
+						newSelector : '#new-item-target'
+					},
 				],
 				itemTemplate         : {{ $item_template }},
 				lastItemId           : {{ $last_item_id }}
@@ -115,10 +119,19 @@
 								<div class="control-group">
 									{{ Form::label('new-item-uri', Lang::line('menus::menus.general.uri')) }}
 									{{ Form::text(null, null, array('class' => 'input-block-level', 'id' => 'new-item-uri', 'placeholder' => Lang::line('menus::menus.general.uri'), 'required')) }}
+								</div>
 
+								<div class="control-group">
 									<label class="checkbox">
 										{{ Form::checkbox(null, 1, false, array('id' => 'new-item-secure')) }}
 										{{ Lang::line('menus::menus.general.secure') }}
+									</label>
+								</div>
+
+								<div class="control-group">
+									<label class="checkbox">
+										{{ Form::checkbox(null, 1, false, array('id' => 'new-item-target')) }}
+										{{ Lang::line('menus::menus.general.target') }}
 									</label>
 								</div>
 

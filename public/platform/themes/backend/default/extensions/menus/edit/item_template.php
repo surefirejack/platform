@@ -34,6 +34,14 @@
 				</div>
 
 				<div class="control-group">
+					<label class="checkbox">
+						<input type="checkbox" name="item_fields[{{id}}][target]" value="1" id="menu-items-{{id}}-target" class="item-target" {{field.target}} required>
+						<?php echo Lang::line('menus::menus.general.target'); ?>
+					</label>
+				</div>
+
+
+				<div class="control-group">
 					<?php echo Form::label('menu-items-{{id}}-type', Lang::line('menus::menus.general.type')); ?>
 					<?php echo Form::select('item_fields[{{id}}][type]', array(0 => Lang::line('menus::menus.general.show_always'), 1 => Lang::line('menus::menus.general.logged_in'), 2 => Lang::line('menus::menus.general.logged_out'), 3 => Lang::line('menus::menus.general.admin')), 0, array('id' => 'menu-items-{{id}}-type')); ?>
 				</div>
