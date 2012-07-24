@@ -1,6 +1,10 @@
 <li class="{{ in_array($item['id'], $active_path) ? 'active' : null }}">
 
-	{{ HTML::link(($before_uri ? $before_uri.'/' : null).$item['uri'], $item['name']) }}
+	@if (URL::valid($item['uri']))
+		{{ HTML::link($item['uri'], $item['name'], array('target' => '')) }}
+	@else
+		{{ HTML::link((($before_uri) ? $before_uri.'/' : null).$item['uri'], $item['name'], ($item['target'] == 0 ? array('target' => '_self') : array('target' => '_blank')), $item['secure']) }}
+	@endif
 
 	@if ($item['children'])
 		<ul>
