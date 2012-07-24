@@ -5,14 +5,16 @@
 	{{ Lang::line('users::groups.title_create') }}
 @endsection
 
+<!-- Queue Styles | e.g Theme::queue_asset('name', 'path_to_css', 'dependency')-->
+
 <!-- Styles -->
-@section('styles')
-	@parent
+@section ('styles')
 @endsection
 
+<!-- Queue Scripts | e.g. Theme::queue_asset('name', 'path_to_js', 'dependency')-->
+
 <!-- Scripts -->
-@section ('scripts')
-	@parent
+@section('scripts')
 @endsection
 
 <!-- Page Content -->
