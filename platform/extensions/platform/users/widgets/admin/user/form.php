@@ -25,7 +25,7 @@ use Lang;
 use Sentry;
 use Theme;
 
-class Groups_Form
+class Admin_User_Form
 {
 	/**
 	 * Create User Form
@@ -34,7 +34,21 @@ class Groups_Form
 	 */
 	public function create()
 	{
-		return Theme::make('users::widgets.groups.form.create', $data = array());
+		// get and set groups
+		$groups = Sentry::group()->all();
+		//$groups = API::get('users/groups');
+		$data = array();
+		foreach ($groups as $group)
+		{
+			$data['groups'][$group['name']] = ucfirst($group['name']);
+		}
+
+		if (empty($data['groups']))
+		{
+			$data['groups'] = array();
+		}
+
+		return Theme::make('users::widgets.user.form.create', $data);
 	}
 
 	/**
@@ -45,25 +59,39 @@ class Groups_Form
 	public function edit($id)
 	{
 		// get user being edited
-		$group = API::get('users/groups', array(
-			'where' => array('id', '=', $id)
+		$user = API::get('users', array(
+			'where' => array('users.id', '=', $id)
 		));
 
-		if ($group['status'])
+		if ($user['status'])
 		{
-			$data['group'] = $group['groups'][0];
+			$data['user'] = $user['users'][0];
 		}
 		else
 		{
-			// group doesn't exist, redirect
-			return Redirect::to('admin/users/groups');
+			// user doesn't exist, redirect
+			return Redirect::to('admin/users');
 		}
 
-		return Theme::make('users::widgets.groups.form.edit', $data);
+		// set status options
+		$data['status_options'] = array(
+			1 => __('users.enabled'),
+			0 => __('users.disabled'),
+		);
+
+		// get and set group options
+		$user_groups = Sentry::group()->all();
+
+		foreach ($user_groups as $user_group)
+		{
+			$data['user_groups'][$user_group['name']] = ucfirst($user_group['name']);
+		}
+
+		return Theme::make('users::widgets.user.form.edit', $data);
 	}
 
 	/**
-	 * Edit Group - Permissions
+	 * Edit User - Permissions
 	 *
 	 * @return  View
 	 */
@@ -72,7 +100,7 @@ class Groups_Form
 		$bundle_rules = Sentry\Sentry_Rules::fetch_bundle_rules();
 
 		// get current group permissions
-		$current_permissions = json_decode(Sentry\Sentry::group((int) $id)->get('permissions'), 'assoc');
+		$current_permissions = json_decode(Sentry\Sentry::user((int) $id)->get('permissions'), 'assoc');
 		$current_permissions = ($current_permissions) ?: array();
 
 		$extension_rules = array();
@@ -111,7 +139,7 @@ class Groups_Form
 			'extension_rules'     => $extension_rules
 		);
 
-		return Theme::make('users::widgets.groups.form.permissions', $data);
+		return Theme::make('users::widgets.user.form.permissions', $data);
 	}
 
 }

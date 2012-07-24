@@ -2,7 +2,7 @@
 
 <!-- Page Title -->
 @section('title')
-	{{ Lang::line('users::groups.general.title') }}
+	{{ Lang::line('users::users.general.title') }}
 @endsection
 
 <!-- Queue Styles -->
@@ -22,14 +22,16 @@
 
 <!-- Page Content -->
 @section('content')
-
-<section id="groups">
+<section id="users">
 
 	<header class="head row">
-		<div class="span6">
-			<h1>{{ Lang::line('users::groups.general.title') }}</h1>
-			<p>{{ Lang::line('users::groups.general.description') }}</p>
+		<div class="span4">
+			<h1>{{ Lang::line('users::users.general.title') }}</h1>
+			<p>{{ Lang::line('users::users.general.description') }}</p>
 		</div>
+		<nav class="tertiary-navigation span8">
+			@widget('platform.menus::menus.nav', 2, 1, 'nav nav-pills pull-right', ADMIN)
+		</nav>
 	</header>
 
 	<hr>
@@ -38,7 +40,7 @@
 		<div class="actions clearfix">
 			<div id="table-filters" class="form-inline pull-left"></div>
 			<div class="pull-right">
-				<a class="btn btn-large btn-primary" href="{{ URL::to_secure(ADMIN.'/users/groups/create') }}">{{ Lang::line('users::groups.button.create') }}</a>
+				<a class="btn btn-large btn-primary" href="{{ URL::to_secure(ADMIN.'/users/create') }}">{{ Lang::line('users::users.button.create') }}</a>
 			</div>
 		</div>
 
@@ -50,7 +52,7 @@
 				<div class="row">
 					<div class="span10">
 						<div class="table-wrapper">
-							<table id="groups-table" class="table table-bordered">
+							<table id="users-table" class="table table-bordered">
 								<thead>
 									<tr>
 										@foreach ($columns as $key => $col)
@@ -72,8 +74,8 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 </section>
-
 @endsection

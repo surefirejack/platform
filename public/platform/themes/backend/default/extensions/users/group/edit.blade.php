@@ -12,7 +12,7 @@
 @endsection
 
 <!-- Queue Scripts -->
-{{ Theme::queue_asset('bootstrap-tab','js/bootstrap/tab.js') }}
+{{ Theme::queue_asset('bootstrap-tab','js/bootstrap/tab.js', 'jquery') }}
 
 <!-- Scripts -->
 @section('scripts')
@@ -38,10 +38,10 @@
 		</ul>
 		<div class="tab-content">
 		    <div class="tab-pane active" id="general">
-		    	@widget('platform.users::groups.form.edit', $id)
+		    	@widget('platform.users::admin.group.form.edit', $id)
 		    </div>
 		    <div class="tab-pane" id="permissions">
-		    	@widget('platform.users::groups.form.permissions', $id)
+		    	@widget('platform.users::admin.group.form.permissions', $id)
 		    </div>
 	  	</div>
 	</div>

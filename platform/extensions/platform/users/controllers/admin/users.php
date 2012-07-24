@@ -55,14 +55,14 @@ class Users_Admin_Users_Controller extends Admin_Controller
 		if (Request::ajax())
 		{
 			return json_encode(array(
-				"content"        => Theme::make('users::partials.table_users', $data)->render(),
+				"content"        => Theme::make('users::user.partials.table_users', $data)->render(),
 				"count"          => $datatable['count'],
 				"count_filtered" => $datatable['count_filtered'],
 				"paging"         => $datatable['paging'],
 			));
 		}
 
-		return Theme::make('users::index', $data);
+		return Theme::make('users::user.index', $data);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class Users_Admin_Users_Controller extends Admin_Controller
 	 */
 	public function get_create()
 	{
-		return Theme::make('users::create');
+		return Theme::make('users::user.create');
 	}
 
 	/**
@@ -121,7 +121,7 @@ class Users_Admin_Users_Controller extends Admin_Controller
 	{
 		$data = array('id' => $id);
 
-		return Theme::make('users::edit', $data);
+		return Theme::make('users::user.edit', $data);
 	}
 
 	/**

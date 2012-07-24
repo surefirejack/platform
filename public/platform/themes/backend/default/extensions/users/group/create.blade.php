@@ -19,7 +19,22 @@
 
 <!-- Page Content -->
 @section('content')
-<div>
-	@widget('platform.users::groups.form.create')
-</div>
+<section id="users">
+
+	<header class="head row">
+		<div class="span4">
+			<h1>{{ Lang::line('users::groups.create.title') }}</h1>
+			<p>{{ Lang::line('users::groups.create.description') }}</p>
+		</div>
+	</header>
+
+	<hr>
+
+	<div class="row">
+		<div class="span12">
+			@widget('platform.users::admin.group.form.create')
+		</div>
+	</div>
+
+</section>
 @endsection
