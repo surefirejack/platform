@@ -72,7 +72,14 @@ hr {
 ================================================== */
 #base > header  {
 	background: @page url(../img/bg-page.png);
+
 	}
+
+	#base > header .wrapper {
+		border:1px solid @etch;
+		border-bottom:none;
+	}
+
 	#base > header .container {
 			padding:40px 20px;
 			text-align:center;
@@ -131,6 +138,10 @@ hr {
 #page {
 	background: @page url(../img/bg-page.png);
 }
+	#page .grid {
+		border:1px solid @etch;
+		border-top:none;
+	}
 
 	#page .content {
 		padding:20px 40px;
@@ -145,8 +156,12 @@ hr {
 	background:@page;
 	text-align:center;
 }
+	#base > footer .wrapper {
+		border:1px solid @etch;
+		border-top:1px solid @white;
+	}
 	#base > footer .container {
-		padding:40px;
+		padding:30px;
 	}
 
 	#base > footer .copyright, #base > footer .licence {
