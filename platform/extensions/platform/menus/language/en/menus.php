@@ -31,6 +31,7 @@ return array(
 		'slug'        => 'Slug',
 		'uri'         => 'Uri',
 		'secure'      => 'Secure (HTTPS)',
+		'target'      => 'Open in new window.',
 		'status'      => 'Enabled',
 		'new_item'    => 'New Item',
 		'type'        => 'Visability',

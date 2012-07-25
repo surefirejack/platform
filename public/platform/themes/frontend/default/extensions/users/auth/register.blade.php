@@ -6,7 +6,7 @@
 @endsection
 
 <!-- Queue Styles -->
-{{ Theme::queue_asset('auth', 'users::css/auth-forms.less', 'style') }}
+{{ Theme::queue_asset('auth', 'users::css/form.less', 'style') }}
 
 <!-- Styles -->
 @section ('styles')
@@ -22,8 +22,8 @@
 <!-- Page Content -->
 @section('content')
 
-<div>
+<section id="register">
 	@widget('platform.users::form.register')
-</div>
+</section>
 
 @endsection

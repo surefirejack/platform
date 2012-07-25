@@ -34,6 +34,13 @@
 				</div>
 
 				<div class="control-group">
+					<label class="checkbox">
+						{{ Form::checkbox('item_fields['.$item['id'].'][target]', 1, (bool) $item['target'], array('class' => 'item-target', ( ! $item['user_editable'] or URL::valid($item['uri'])) ? 'disabled' : null)) }}
+						{{ Lang::line('menus::menus.general.target') }}
+					</label>
+				</div>
+
+				<div class="control-group">
 					{{ Form::label('menu-items-'.$item['id'].'-type', Lang::line('menus::menus.general.type')) }}
 					{{ Form::select('item_fields['.$item['id'].'][type]', array(0 => Lang::line('menus::menus.general.show_always'), 1 => Lang::line('menus::menus.general.logged_in'), 2 => Lang::line('menus::menus.general.logged_out'), 3 => Lang::line('menus::menus.general.admin')), $item['type'], array('id' => 'menu-items-'.$item['id'].'-type', ( ! $item['user_editable']) ? 'disabled' : 'required')) }}
 				</div>

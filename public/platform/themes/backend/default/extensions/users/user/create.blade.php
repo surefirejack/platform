@@ -33,7 +33,7 @@
 
 	<div class="row">
 		<div class="span12">
-			@widget('platform.users::admin.users.form.create')
+			@widget('platform.users::admin.user.form.create')
 		</div>
 	</div>
 

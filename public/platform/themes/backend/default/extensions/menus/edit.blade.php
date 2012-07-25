@@ -14,7 +14,7 @@
 
 <!-- Queue Scripts -->
 {{ Theme::queue_asset('jquery-helpers', 'js/jquery/helpers.js', 'jquery') }}
-{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/bootstrap-tab.js', 'jquery') }}
+{{ Theme::queue_asset('bootstrap-tab', 'js/bootstrap/tab.js', 'jquery') }}
 {{ Theme::queue_asset('jquery-ui', 'js/jquery/ui-1.8.18.min.js', 'jquery') }}
 {{ Theme::queue_asset('jquery-nestedsortable', 'js/jquery/nestedsortable-1.3.4.js', 'jquery') }}
 {{ Theme::queue_asset('jquery-nestysortable', 'js/jquery/nestysortable-1.0.js', 'jquery') }}
@@ -54,6 +54,10 @@
 					{
 						name        : 'type',
 						newSelector : '#new-item-type'
+					},
+					{
+						name        : 'target',
+						newSelector : '#new-item-target'
 					},
 				],
 				itemTemplate         : {{ $item_template }},
@@ -115,10 +119,19 @@
 								<div class="control-group">
 									{{ Form::label('new-item-uri', Lang::line('menus::menus.general.uri')) }}
 									{{ Form::text(null, null, array('class' => 'input-block-level', 'id' => 'new-item-uri', 'placeholder' => Lang::line('menus::menus.general.uri'), 'required')) }}
+								</div>
 
+								<div class="control-group">
 									<label class="checkbox">
 										{{ Form::checkbox(null, 1, false, array('id' => 'new-item-secure')) }}
 										{{ Lang::line('menus::menus.general.secure') }}
+									</label>
+								</div>
+
+								<div class="control-group">
+									<label class="checkbox">
+										{{ Form::checkbox(null, 1, false, array('id' => 'new-item-target')) }}
+										{{ Lang::line('menus::menus.general.target') }}
 									</label>
 								</div>
 
