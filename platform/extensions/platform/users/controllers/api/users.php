@@ -89,8 +89,7 @@ class Users_API_Users_Controller extends API_Controller
 
 				// Send the email
 				$mailer->send($message);
-				echo $hash;
-				    exit;
+
 				// respond
 				return array(
 					'status'  => true,
