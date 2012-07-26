@@ -50,17 +50,18 @@
 <div id="base" class="grid">
 
 	<header class="rows">
-		<div class="container">
-			<a href="{{ URL::to('') }}">
-				<img class="brand" src="{{ Theme::asset('img/brand.png') }}" title="Platform by Cartalyst LLC">
-			</a>
-			<h1>@get.settings.site.title</h1>
-			<hr>
-			<nav>
-				@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
-			</nav>
-			<h2>Platform is an application base, a bootstrap for Laravel. The fundamentals <span>+</span> a few essentials included. It's well documented, feature awesome, and open source.</h2>
-
+		<div class="wrapper">
+			<div class="container">
+				<a href="{{ URL::to('') }}">
+					<img class="brand" src="{{ Theme::asset('img/brand.png') }}" title="Platform by Cartalyst LLC">
+				</a>
+				<h1>@get.settings.site.title</h1>
+				<hr>
+				<nav>
+					@widget('platform.menus::menus.nav', 'main', 1, 'nav nav-pills')
+				</nav>
+				<h2>An application base on Laravel. It's well documented, feature awesome, and open source.</h2>
+			</div>
 		</div>
 	</header>
 
@@ -73,8 +74,10 @@
 	</div>
 
 	<footer class="rows">
-		<div class="container">
-			@include('templates.partials.footer')
+		<div class="wrapper">
+			<div class="container">
+				@include('templates.partials.footer')
+			</div>
 		</div>
 	</footer>
 
